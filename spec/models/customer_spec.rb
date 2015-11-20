@@ -14,7 +14,7 @@ RSpec.describe Customer do
       nacionality: 'Brasileiro',
       mother: 'Customers mother',
       father: 'Customers father',
-      postal_code: '64.000-000',
+      postal_code: '64000-000',
       address: 'Rua Teste, 123',
       neighborhood: 'Ininga',
       adjunct: '',
@@ -27,4 +27,9 @@ RSpec.describe Customer do
   end
 
   it { should be_valid }
+
+  it 'should can create a new user' do
+    subject.save
+    expect(subject).to be_persisted
+  end
 end
