@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Vehicle do
-  it 'create a vehicle' do
-    visit '/vehicles/new'
+  it 'create' do
+    visit new_vehicle_path
 
     fill_in 'Brand', with: 'Audi'
     fill_in 'Version', with: 'A4 2.0 AT'
