@@ -19,7 +19,7 @@ describe Vehicle do
     fill_in 'Old license plate', with: 'BBB-0000'
     select 'stock', from: 'Status'
 
-    click_on 'Create Vehicle'
+    click_on 'Criar Vehicle'
 
     expect(page).to have_content 'Vehicle created successful'
   end
