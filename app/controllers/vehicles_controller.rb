@@ -1,4 +1,6 @@
 class VehiclesController < ApplicationController
+  before_action :set_vehicle, only: [:show, :edit, :update]
+
   def new
     @vehicle = Vehicle.new
   end
@@ -16,10 +18,26 @@ class VehiclesController < ApplicationController
   end
 
   def show
-    @vehicle = Vehicle.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @vehicle.update(vehicle_params)
+      flash[:notice] = 'Vehicle update successful'
+      redirect_to @vehicle
+    else
+      flash[:alert] = "Vehicle can't be updated"
+      render :edit
+    end
   end
 
   private
+
+  def set_vehicle
+    @vehicle = Vehicle.find(params[:id])
+  end
 
   def vehicle_params
     params.require(:vehicle).permit(
