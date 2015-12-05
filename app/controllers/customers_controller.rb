@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  before_action :set_customer, only: [:show, :edit, :update]
+
   def new
     @customer = Customer.new
   end
@@ -7,7 +9,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
 
     if @customer.save
-      flash[:notice] = 'Customer created successfull'
+      flash[:notice] = 'Customer created successful'
       redirect_to @customer
     else
       flash[:alert] = "Customer can't be created"
@@ -16,10 +18,26 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @customer.update(customer_params)
+      flash[:notice] = 'Customer updated successful'
+      redirect_to @customer
+    else
+      flash[:alert] = "Customer can't be updated"
+      render :edit
+    end
   end
 
   private
+
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 
   def customer_params
     params.require(:customer).permit(:full_name, :cpf, :birth_date, :rg, :rg_sender, :rg_expedition,
