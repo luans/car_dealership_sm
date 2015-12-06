@@ -1,0 +1,16 @@
+<h1>Listagem de clientes</h1>
+
+<table>
+  <thread>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+    </tr>
+  </thread>
+  <tbody>
+    <%= content_tag_for :tr, @customers do |customer| %>
+      <td><%= customer.full_name %></td>
+      <td><%= link_to 'editar', edit_customer_path(customer) %></td>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,26 @@
+pt-BR:
+  activerecord:
+    models:
+      customer: 'Cliente'
+    attributes:
+      customer:
+        full_name: 'Nome completo'
+        cpf: 'CPF'
+        birth_date: 'Data de nascimento'
+        rg: 'RG'
+        rg_sender: 'Emissor'
+        rg_expedition: 'Data de expedição'
+        place_birth: 'Naturalidade'
+        place_birth_uf: 'UF'
+        nacionality: 'Nacionalidade'
+        mother: 'Mãe'
+        father: 'Pai'
+        postal_code: 'CEP'
+        address: 'Endereço'
+        neighborhood: 'Bairro'
+        adjunct: 'Complemento'
+        city: 'Cidade'
+        state: 'Estado'
+        phone: 'Telefone'
+        cell_phone: 'Celular'
+        email: 'E-mail'

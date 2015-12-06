@@ -1,20 +1,17 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update]
 
+  def index
+    @customers = Customer.all
+  end
+
   def new
     @customer = Customer.new
   end
 
   def create
-    @customer = Customer.new(customer_params)
-
-    if @customer.save
-      flash[:notice] = 'Customer created successful'
-      redirect_to @customer
-    else
-      flash[:alert] = "Customer can't be created"
-      render :new
-    end
+    @customer = Customer.create(customer_params)
+    respond_with @customer
   end
 
   def show
@@ -24,13 +21,8 @@ class CustomersController < ApplicationController
   end
 
   def update
-    if @customer.update(customer_params)
-      flash[:notice] = 'Customer updated successful'
-      redirect_to @customer
-    else
-      flash[:alert] = "Customer can't be updated"
-      render :edit
-    end
+    @customer.update(customer_params)
+    respond_with @customer
   end
 
   private
