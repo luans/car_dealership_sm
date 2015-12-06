@@ -18,3 +18,5 @@ end
 group :test, :development do
   gem 'dotenv-rails'
 end
+
+gem 'responders'
