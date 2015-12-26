@@ -5,6 +5,6 @@ class Vehicle < ActiveRecord::Base
   }
 
   def status
-    I18n.t(read_attribute(:status), scope: 'enumerize.vehicle.status').capitalize
+    I18n.t(read_attribute(:status), scope: 'enumerize.vehicle.status').capitalize || read_attribute(:status)
   end
 end
