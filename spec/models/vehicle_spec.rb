@@ -20,7 +20,13 @@ RSpec.describe Vehicle, type: :model do
     )
   end
 
-  it { should be_valid }
+  it { is_expected.to be_valid }
+  it { is_expected.to validate_presence_of(:brand) }
+  it { is_expected.to validate_presence_of(:version) }
+  it { is_expected.to validate_presence_of(:model_year) }
+  it { is_expected.to validate_presence_of(:maker_year) }
+  it { is_expected.to validate_presence_of(:license_plate) }
+  it { is_expected.to validate_presence_of(:status) }
   it { is_expected.to enumerize(:status).in(:stock, :sold) }
 end
 
