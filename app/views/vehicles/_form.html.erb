@@ -39,7 +39,7 @@
   <%= f.text_field :old_license_plate %>
 
   <%= f.label :status %>
-  <%= f.select :status, Vehicle::STATUS.map{|k,v| [v.capitalize, k]} %>
+  <%= f.select :status, Vehicle.status.options %>
 
   <%= f.submit %>
 <% end %>

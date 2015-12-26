@@ -2,5 +2,5 @@ pt-BR:
   enumerize:
     vehicle:
       status:
-        stock: 'estoque'
-        sold: 'vendido'
+        stock: 'Estoque'
+        sold: 'Vendido'

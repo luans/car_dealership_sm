@@ -21,3 +21,4 @@ group :test, :development do
 end
 
 gem 'responders'
+gem 'enumerize'

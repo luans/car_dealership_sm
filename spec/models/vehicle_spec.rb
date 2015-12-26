@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Vehicle do
+RSpec.describe Vehicle, type: :model do
   subject do
     Vehicle.new(
       brand: 'Audi',
@@ -21,6 +21,7 @@ RSpec.describe Vehicle do
   end
 
   it { should be_valid }
+  it { is_expected.to enumerize(:status).in(:stock, :sold) }
 end
 
 
