@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 group :test, :development do
