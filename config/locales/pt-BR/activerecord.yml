@@ -2,6 +2,7 @@ pt-BR:
   activerecord:
     models:
       customer: 'Cliente'
+      vehicle: 'Veículo'
     attributes:
       customer:
         full_name: 'Nome completo'
@@ -24,3 +25,18 @@ pt-BR:
         phone: 'Telefone'
         cell_phone: 'Celular'
         email: 'E-mail'
+      vehicle:
+        brand: 'Marca'
+        version: 'Versão'
+        maker_year: 'Ano fabricação'
+        model_year: 'Ano modelo'
+        license_plate: 'Placa'
+        city: 'Cidade'
+        uf: 'UF'
+        color: 'Cor'
+        fuel: 'Combustível'
+        renavam: 'Renavam'
+        chassi: 'Chassi'
+        owner: 'Proprietário'
+        old_license_plate: 'Placa anterior'
+        status: 'Status'
