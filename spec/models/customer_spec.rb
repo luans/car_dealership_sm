@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Customer do
+RSpec.describe Customer, type: :model do
   subject do
     described_class.new(
       full_name: 'Customer Test',
@@ -26,31 +26,29 @@ RSpec.describe Customer do
     )
   end
 
-  it 'should can create a new user' do
+  it 'should can create a new customer' do
     expect{ subject.save }.to change { subject.persisted? }.to true
   end
 
-  context 'validations' do
-    it { is_expected.to be_valid }
-    it { is_expected.to validate_presence_of(:full_name) }
-    it { is_expected.to validate_presence_of(:cpf) }
-    it { is_expected.to validate_length_of(:place_birth_uf).is_equal_to(2) }
+  it { is_expected.to be_valid }
+  it { is_expected.to validate_presence_of(:full_name) }
+  it { is_expected.to validate_presence_of(:cpf) }
+  it { is_expected.to validate_length_of(:place_birth_uf).is_equal_to(2) }
 
-    it 'should require email has a valid format' do
-      subject.email = 'jhon.doe@example.com'
-      expect(subject).to be_valid
+  it 'should require email has a valid format' do
+    subject.email = 'jhon.doe@example.com'
+    expect(subject).to be_valid
+  end
+
+  context 'date' do
+    it 'should require old should to be enough (18 or more)' do
+      expect{ subject.birth_date = Date.today - 17.years }.to change { subject.valid? }.to false
+      expect(subject.errors.full_messages).to include 'Data de nascimento não é válido'
     end
 
-    context 'date' do
-      it 'should require old should to be enough (18 or more)' do
-        expect{ subject.birth_date = Date.today - 17.years }.to change { subject.valid? }.to false
-        expect(subject.errors.full_messages).to include 'Data de nascimento não é válido'
-      end
-
-      it 'should require rg_expedition should be equal or less the current date' do
-        expect{ subject.rg_expedition = Date.today + 1 }.to change { subject.valid? }.to false
-        expect(subject.errors.full_messages).to include 'Data de expedição não é válido'
-      end
+    it 'should require rg_expedition should be equal or less the current date' do
+      expect{ subject.rg_expedition = Date.today + 1 }.to change { subject.valid? }.to false
+      expect(subject.errors.full_messages).to include 'Data de expedição não é válido'
     end
   end
 end
