@@ -6,15 +6,8 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    @vehicle = Vehicle.new(vehicle_params)
-
-    if @vehicle.save
-      flash[:notice] = 'Vehicle created successful'
-      redirect_to @vehicle
-    else
-      flash[:alert] = "Vehicle can't be saved"
-      render :new
-    end
+    @vehicle = Vehicle.create(vehicle_params)
+    respond_with @vehicle
   end
 
   def show
@@ -24,13 +17,8 @@ class VehiclesController < ApplicationController
   end
 
   def update
-    if @vehicle.update(vehicle_params)
-      flash[:notice] = 'Vehicle update successful'
-      redirect_to @vehicle
-    else
-      flash[:alert] = "Vehicle can't be updated"
-      render :edit
-    end
+    @vehicle.update(vehicle_params)
+    respond_with @vehicle
   end
 
   private
