@@ -20,6 +20,10 @@ RSpec.describe Vehicle, type: :model do
     )
   end
 
+  it 'should can create a new vehicle' do
+    expect { subject.save }.to change { subject.persisted? }.to true
+  end
+
   it { is_expected.to be_valid }
   it { is_expected.to validate_presence_of(:brand) }
   it { is_expected.to validate_presence_of(:version) }
