@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 describe Vehicle do
+  before do
+    visit root_path
+  end
+
   it 'create' do
-    visit new_vehicle_path
+    click_on 'Cadastrar veículo'
 
     fill_in 'Marca', with: 'Audi'
     fill_in 'Versão', with: 'A4 2.0 AT'
