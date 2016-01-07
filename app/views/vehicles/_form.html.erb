@@ -1,45 +1,20 @@
-<%= form_for @vehicle do |f| %>
-  <%= f.label :brand %>
-  <%= f.text_field :brand %>
+<%= simple_form_for @vehicle do |f| %>
+  <%= f.error_notification %>
 
-  <%= f.label :version %>
-  <%= f.text_field :version %>
-
-  <%= f.label :maker_year %>
-  <%= f.text_field :maker_year %>
-
-  <%= f.label :model_year %>
-  <%= f.text_field :model_year %>
-
-  <%= f.label :license_plate %>
-  <%= f.text_field :license_plate %>
-
-  <%= f.label :city %>
-  <%= f.text_field :city %>
-
-  <%= f.label :uf %>
-  <%= f.text_field :uf %>
-
-  <%= f.label :color %>
-  <%= f.text_field :color %>
-
-  <%= f.label :fuel %>
-  <%= f.text_field :fuel %>
-
-  <%= f.label :renavam %>
-  <%= f.text_field :renavam %>
-
-  <%= f.label :chassi %>
-  <%= f.text_field :chassi %>
-
-  <%= f.label :owner %>
-  <%= f.text_field :owner %>
-
-  <%= f.label :old_license_plate %>
-  <%= f.text_field :old_license_plate %>
-
-  <%= f.label :status %>
-  <%= f.select :status, Vehicle.status.options %>
+  <%= f.input :brand %>
+  <%= f.input :version %>
+  <%= f.input :maker_year %>
+  <%= f.input :model_year %>
+  <%= f.input :license_plate %>
+  <%= f.input :city %>
+  <%= f.input :uf %>
+  <%= f.input :color %>
+  <%= f.input :fuel %>
+  <%= f.input :renavam %>
+  <%= f.input :chassi %>
+  <%= f.input :owner %>
+  <%= f.input :old_license_plate %>
+  <%= f.input :status %>
 
   <%= f.submit %>
 <% end %>

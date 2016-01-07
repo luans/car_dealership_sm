@@ -12,7 +12,7 @@ describe Vehicle do
     fill_in 'Versão', with: 'A4 2.0 AT'
     fill_in 'Ano fabricação', with: 2014
     fill_in 'Ano modelo', with: 2014
-    fill_in 'Placa', with: "AAA0000"
+    fill_in 'Placa', with: "AAA0000", match: :prefer_exact
     fill_in 'Cidade', with: 'Teresina'
     fill_in 'UF', with: 'PI'
     fill_in 'Cor', with: 'Vermelho'
@@ -67,7 +67,7 @@ describe Vehicle do
     fill_in 'Versão', with: 'TT 3.0 Aut'
     fill_in 'Ano fabricação', with: 2015
     fill_in 'Ano modelo', with: 2015
-    fill_in 'Placa', with: 'AAA1111'
+    fill_in 'Placa', with: 'AAA1111', match: :prefer_exact
     fill_in 'Cidade', with: 'Timon'
     fill_in 'UF', with: 'MA'
     fill_in 'Cor', with: 'Branco'
