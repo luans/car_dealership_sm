@@ -22,3 +22,4 @@ end
 
 gem 'responders'
 gem 'enumerize'
+gem 'simple_form'
