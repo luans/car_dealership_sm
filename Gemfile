@@ -23,3 +23,4 @@ end
 gem 'responders'
 gem 'enumerize'
 gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.6'
