@@ -21,6 +21,8 @@ class CreateCustomer < ActiveRecord::Migration
       t.string :phone
       t.string :cell_phone
       t.string :email
+
+      t.timestamps
     end
   end
 end
