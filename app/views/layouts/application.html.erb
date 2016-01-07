@@ -8,15 +8,19 @@
 </head>
 <body>
 
-<% if notice.present? %>
-  <div><%= notice %></div>
-<% end %>
+  <div class='container-fluid'>
 
-<% if alert.present? %>
-  <div><%= alert %></div>
-<% end %>
+    <% if notice.present? %>
+      <div><%= notice %></div>
+    <% end %>
 
-<%= yield %>
+    <% if alert.present? %>
+      <div><%= alert %></div>
+    <% end %>
+
+    <%= yield %>
+
+  </div><!-- /.container-fluid -->
 
 </body>
 </html>
