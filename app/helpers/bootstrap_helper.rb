@@ -6,6 +6,8 @@ module BootstrapHelper
     end
   end
 
+  private
+
   def active?(link)
     current_page?(link) ? 'active' : ''
   end
