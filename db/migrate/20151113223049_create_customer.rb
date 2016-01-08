@@ -2,7 +2,7 @@ class CreateCustomer < ActiveRecord::Migration
   def change
     create_table :customers do |t|
       t.string :full_name, null: false
-      t.string :cpf, null: false
+      t.string :cpf, unique: true, null: false
       t.date :birth_date
       t.string :rg
       t.string :rg_sender
@@ -20,7 +20,7 @@ class CreateCustomer < ActiveRecord::Migration
       t.string :state
       t.string :phone
       t.string :cell_phone
-      t.string :email
+      t.string :email, unique: true
 
       t.timestamps
     end
