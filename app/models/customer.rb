@@ -9,8 +9,9 @@ class Customer < ActiveRecord::Base
 
   # 18 years old or more
   def old_enough
+    return false unless birth_date
     old_insufficient = birth_date.advance(years: 18) >= Date.current
-    errors.add(:birth_date) if birth_date && old_insufficient
+    errors.add(:birth_date) if old_insufficient
   end
 
   def rg_expedition_date
