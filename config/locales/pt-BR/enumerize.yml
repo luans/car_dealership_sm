@@ -1,0 +1,6 @@
+pt-BR:
+  enumerize:
+    vehicle:
+      status:
+        stock: 'Estoque'
+        sold: 'Vendido'

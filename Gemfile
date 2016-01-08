@@ -12,8 +12,15 @@ gem 'jbuilder', '~> 2.0'
 
 group :test do
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 group :test, :development do
   gem 'dotenv-rails'
 end
+
+gem 'responders'
+gem 'enumerize'
+gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.6'

@@ -8,7 +8,21 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= render 'shared/navbar' %>
+
+  <div class='container-fluid'>
+
+    <% if notice.present? %>
+      <div><%= notice %></div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div><%= alert %></div>
+    <% end %>
+
+    <%= yield %>
+
+  </div><!-- /.container-fluid -->
 
 </body>
 </html>

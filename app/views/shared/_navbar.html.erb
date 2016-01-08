@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'CarDealership', root_path, class: 'navbar-brand' %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Veículos <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <%= active_link_to 'Cadastrar veículo', new_vehicle_path %>
+            <%= active_link_to 'Listar veículos', vehicles_path %>
+          </ul><!-- /.dropdown-menu -->
+        </li><!-- /.dropdown -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Clientes <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <%= active_link_to 'Cadastrar cliente', new_customer_path %>
+            <%= active_link_to 'Listar clientes', customers_path %>
+          </ul><!-- /.dropdown-menu -->
+        </li><!-- /.dropdown -->
+      </ul><!-- /.nav.navbar-nav -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
