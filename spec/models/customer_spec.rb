@@ -42,12 +42,14 @@ RSpec.describe Customer, type: :model do
 
   context 'date' do
     it 'should require old should to be enough (18 or more)' do
-      expect{ subject.birth_date = Date.today - 17.years }.to change { subject.valid? }.to false
+      subject.birth_date = Date.current - 17.years
+      expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include 'Data de nascimento não é válido'
     end
 
     it 'should require rg_expedition should be equal or less the current date' do
-      expect{ subject.rg_expedition = Date.today + 1 }.to change { subject.valid? }.to false
+      subject.rg_expedition = Date.tomorrow
+      expect(subject).to be_invalid
       expect(subject.errors.full_messages).to include 'Data de expedição não é válido'
     end
   end

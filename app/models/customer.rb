@@ -9,13 +9,11 @@ class Customer < ActiveRecord::Base
 
   # 18 years old or more
   def old_enough
-    if self.birth_date
-      old_insufficient = (self.birth_date + 18.years) > Date.today
-      errors.add(:birth_date) if old_insufficient
-    end
+    old_insufficient = birth_date.advance(years: 18) >= Date.current
+    errors.add(:birth_date) if birth_date && old_insufficient
   end
 
   def rg_expedition_date
-    errors.add(:rg_expedition) if self.rg_expedition && self.rg_expedition > Date.today
+    errors.add(:rg_expedition) if rg_expedition && rg_expedition > Date.current
   end
 end
