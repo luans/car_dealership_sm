@@ -17,8 +17,8 @@ RSpec.describe Vehicle, type: :model do
   it { is_expected.to validate_presence_of(:license_plate) }
   it { is_expected.to validate_presence_of(:status) }
   it { is_expected.to validate_uniqueness_of(:license_plate) }
-  it { is_expected.to validate_uniqueness_of(:renavam) }
   it { is_expected.to validate_uniqueness_of(:chassi) }
+  it { is_expected.to validate_uniqueness_of(:renavam).case_insensitive }
   it { is_expected.to enumerize(:status).in(:stock, :sold) }
 
   context 'model_year' do

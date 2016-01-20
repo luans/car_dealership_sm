@@ -6,7 +6,8 @@ class Vehicle < ActiveRecord::Base
   enumerize :status, in: STATUS, predicates: true, scope: true
 
   validates_presence_of :license_plate, :brand, :version, :model_year, :maker_year, :status
-  validates_uniqueness_of :license_plate, :chassi, :renavam
+  validates_uniqueness_of :license_plate, :chassi
+  validates_uniqueness_of :renavam, case_sensitive: false
   validate :model_year_validation
 
   private

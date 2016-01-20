@@ -11,7 +11,7 @@ RSpec.describe Customer, type: :model do
   it { is_expected.to validate_presence_of(:full_name) }
   it { is_expected.to validate_presence_of(:cpf) }
   it { is_expected.to validate_length_of(:place_birth_uf).is_equal_to(2) }
-  it { is_expected.to validate_uniqueness_of(:cpf) }
+  it { is_expected.to validate_uniqueness_of(:cpf).case_insensitive }
   it { is_expected.to validate_uniqueness_of(:email) }
 
   it 'should require email has a valid format' do

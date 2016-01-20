@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 2.0'
 
 group :test do
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', '2.5.0'
   gem 'shoulda-matchers', '~> 3.0'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
