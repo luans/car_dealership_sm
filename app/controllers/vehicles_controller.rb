@@ -6,7 +6,7 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    @vehicle = Vehicle.create(vehicle_params)
+    @vehicle = CreateVehicle.create(vehicle_params)
     respond_with @vehicle
   end
 
@@ -30,6 +30,6 @@ class VehiclesController < ApplicationController
   def vehicle_params
     params.require(:vehicle).permit(
       :brand, :version, :maker_year, :model_year, :license_plate, :city,
-      :uf, :color, :fuel, :renavam, :chassi, :owner, :old_license_plate, :status)
+      :uf, :color, :fuel, :renavam, :chassi, :owner, :old_license_plate)
   end
 end
