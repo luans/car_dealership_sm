@@ -1,0 +1,23 @@
+sudo: false
+
+language: ruby
+
+services:
+  - postgresql
+
+install:
+  - bundle install
+
+before_script:
+  - cp config/database.sample.yml config/database.yml
+  - psql -c 'create database car_dealership_sm_test;' -U postgres
+  - rake db:drop db:create db:migrate
+
+rvm:
+  - 2.2.3
+  - 2.1.7
+  - 2.0.0
+
+notifications:
+  email:
+    - rafaelrpbelo@gmail.com
