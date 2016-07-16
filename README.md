@@ -2,6 +2,13 @@
 
 Is a management software that help you to control and manage your Car Dealership business.
 
+# Settings
+
+## Database
+
+Create a database.yml based on database.sample.yml
+
+
 # Run
 
 To build using [docker-compose](https://docs.docker.com/compose/):
