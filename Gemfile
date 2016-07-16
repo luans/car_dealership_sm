@@ -20,6 +20,7 @@ end
 
 group :test, :development do
   gem 'dotenv-rails'
+  gem 'pry'
 end
 
 gem 'responders'
