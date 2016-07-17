@@ -21,7 +21,6 @@ describe Vehicle do
     fill_in 'Chassi', with: '9BWZZZ377VT004251'
     fill_in 'Proprietário', with: 'Jhon Doe'
     fill_in 'Placa anterior', with: 'BBB-0000'
-    select 'Estoque', from: 'Status'
 
     click_on 'Criar Veículo'
 
@@ -61,7 +60,6 @@ describe Vehicle do
     fill_in 'Chassi', with: '9BWZZZ377VT004252'
     fill_in 'Proprietário', with: 'Jhon Cena'
     fill_in 'Placa anterior', with: 'BBB-1111'
-    select 'Vendido', from: 'Status'
 
     click_on 'Atualizar Veículo'
 
@@ -78,6 +76,5 @@ describe Vehicle do
     expect(page).to have_content '9BWZZZ377VT004252'
     expect(page).to have_content 'Jhon Cena'
     expect(page).to have_content 'BBB-1111'
-    expect(page).to have_content 'Vendido'
   end
 end
