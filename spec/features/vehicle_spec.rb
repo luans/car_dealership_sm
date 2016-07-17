@@ -12,7 +12,7 @@ describe Vehicle do
     fill_in 'Versão', with: 'A4 2.0 AT'
     fill_in 'Ano fabricação', with: 2014
     fill_in 'Ano modelo', with: 2014
-    fill_in 'Placa', with: "AAA0000", match: :prefer_exact
+    fill_in 'Placa', with: "AAA-0000", match: :prefer_exact
     fill_in 'Cidade', with: 'Teresina'
     fill_in 'UF', with: 'PI'
     fill_in 'Cor', with: 'Vermelho'
@@ -28,7 +28,7 @@ describe Vehicle do
     expect(page).to have_content 'A4 2.0 AT'
     expect(page).to have_content '2014'
     expect(page).to have_content '2014'
-    expect(page).to have_content 'AAA0000'
+    expect(page).to have_content 'AAA-0000'
     expect(page).to have_content 'Teresina'
     expect(page).to have_content 'PI'
     expect(page).to have_content 'Vermelho'
@@ -51,7 +51,7 @@ describe Vehicle do
     fill_in 'Versão', with: 'TT 3.0 Aut'
     fill_in 'Ano fabricação', with: 2015
     fill_in 'Ano modelo', with: 2015
-    fill_in 'Placa', with: 'AAA1111', match: :prefer_exact
+    fill_in 'Placa', with: 'AAA-1111', match: :prefer_exact
     fill_in 'Cidade', with: 'Timon'
     fill_in 'UF', with: 'MA'
     fill_in 'Cor', with: 'Branco'
@@ -67,7 +67,7 @@ describe Vehicle do
     expect(page).to have_content 'TT 3.0 Aut'
     expect(page).to have_content '2015'
     expect(page).to have_content '2015'
-    expect(page).to have_content 'AAA1111'
+    expect(page).to have_content 'AAA-1111'
     expect(page).to have_content 'Timon'
     expect(page).to have_content 'MA'
     expect(page).to have_content 'Branco'

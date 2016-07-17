@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113223049) do
+ActiveRecord::Schema.define(version: 20160717203003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20151113223049) do
     t.string   "version",                     null: false
     t.integer  "maker_year",                  null: false
     t.integer  "model_year",                  null: false
-    t.string   "license_plate",     limit: 7, null: false
+    t.string   "license_plate",     limit: 8, null: false
     t.string   "city"
     t.string   "uf",                limit: 2
     t.string   "color"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20151113223049) do
     t.string   "renavam"
     t.string   "chassi"
     t.string   "owner"
-    t.string   "old_license_plate"
+    t.string   "old_license_plate", limit: 8
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"

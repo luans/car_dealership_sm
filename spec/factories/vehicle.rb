@@ -4,7 +4,7 @@ FactoryGirl.define do
     version 'A4 AT'
     maker_year 2014
     model_year 2014
-    license_plate 'AAA0000'
+    license_plate 'AAA-0000'
     city 'Teresina'
     uf 'PI'
     color 'Vermelho'

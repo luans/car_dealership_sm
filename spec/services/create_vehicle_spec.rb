@@ -7,7 +7,7 @@ describe CreateVehicle do
       version: 'Camaro SS 6.2 V8 16V 406cv',
       maker_year: '2016',
       model_year: '2016',
-      license_plate: 'XXX1111',
+      license_plate: 'XXX-1111',
       city: 'Teresina',
       uf: 'PI',
       color: 'Preta',

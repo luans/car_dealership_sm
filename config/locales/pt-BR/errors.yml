@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        vehicle:
+          attributes:
+            license_plate:
+              invalid: 'deve ser XXX-0000'
+            old_license_plate:
+              invalid: 'deve ser XXX-0000'
+
