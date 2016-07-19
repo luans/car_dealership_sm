@@ -4,12 +4,14 @@
   <thread>
     <tr>
       <th>Nome</th>
+      <th>CPF</th>
       <th></th>
     </tr>
   </thread>
   <tbody>
     <%= content_tag_for :tr, @customers do |customer| %>
       <td><%= customer.full_name %></td>
+      <td><%= customer.cpf %></td>
       <td><%= link_to 'editar', edit_customer_path(customer) %></td>
     <% end %>
   </tbody>

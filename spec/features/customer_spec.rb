@@ -1,12 +1,15 @@
 require 'rails_helper'
 
-describe Customer do
+feature Customer do
   before do
     visit root_path
   end
 
-  it 'create' do
+  scenario 'create' do
+    click_on 'Cliente'
     click_on 'Cadastrar cliente'
+
+    expect(page).to have_content 'Criar cliente'
 
     fill_in 'Nome completo', with: 'Customer Test'
     fill_in 'CPF', with: '000.000.000-00'
@@ -55,11 +58,23 @@ describe Customer do
     expect(page).to have_content 'customer@test.com'
   end
 
-  it 'update' do
-    customer = create(:customer)
+  scenario 'update' do
+    customer = create(:customer, full_name: 'Customer', cpf: '000.000.000-00', birth_date: '10/10/1990')
 
+    click_on 'Clientes'
     click_on 'Listar clientes'
+
+    expect(page).to have_content 'Listagem de clientes'
+
+    expect(page).to have_content 'Customer'
+    expect(page).to have_content '000.000.000-00'
+
     find_link('editar', href: edit_customer_path(customer)).click
+
+    expect(page).to have_content 'Editar cliente'
+
+    expect(page).to have_field 'Nome completo', with: 'Customer'
+    expect(page).to have_field 'CPF', with: '000.000.000-00'
 
     fill_in 'Nome completo', with: 'Customer edited'
     fill_in 'CPF', with: '000.000.000-01'
