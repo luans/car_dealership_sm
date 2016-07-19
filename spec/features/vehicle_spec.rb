@@ -1,12 +1,15 @@
 require 'rails_helper'
 
-describe Vehicle do
+feature Vehicle do
   before do
     visit root_path
   end
 
-  it 'create' do
+  scenario 'create' do
+    click_on 'Veículos'
     click_on 'Cadastrar veículo'
+
+    expect(page).to have_content 'Criar veículo'
 
     fill_in 'Marca', with: 'Audi'
     fill_in 'Versão', with: 'A4 2.0 AT'
@@ -42,10 +45,26 @@ describe Vehicle do
     expect(page).to have_content 'Veículo criado com sucesso'
   end
 
-  it 'edit' do
-    vehicle = create(:vehicle)
+  scenario 'edit' do
+    vehicle = create(:vehicle, brand: 'Audi', version: 'A4 2.0 AT', maker_year: 2014, model_year: 2014)
 
-    visit edit_vehicle_path(vehicle)
+    click_on 'Veículos'
+    click_on 'Listar veículos'
+
+    expect(page).to have_content 'Listagem de veículos'
+
+    expect(page).to have_content 'Audi'
+    expect(page).to have_content 'A4 2.0 AT'
+    expect(page).to have_content '2014/2014'
+
+    click_on 'editar'
+
+    expect(page).to have_content 'Editar veículo'
+
+    expect(page).to have_field 'Marca', with: 'Audi'
+    expect(page).to have_field 'Versão', with: 'A4 2.0 AT'
+    expect(page).to have_field 'Ano fabricação', with: '2014'
+    expect(page).to have_field 'Ano modelo', with: '2014'
 
     fill_in 'Marca', with: 'Audi edited'
     fill_in 'Versão', with: 'TT 3.0 Aut'

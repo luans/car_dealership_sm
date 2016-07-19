@@ -1,0 +1,20 @@
+<h1>Listagem de veículos</h1>
+
+<table>
+  <thread>
+    <tr>
+      <th>Marca</th>
+      <th>Versão</th>
+      <th>Ano/Modelo</th>
+      <th></th>
+    </tr>
+  </thread>
+  <tbody>
+    <%= content_tag_for :tr, @vehicles do |vehicle| %>
+      <td><%= vehicle.brand %></td>
+      <td><%= vehicle.version %></td>
+      <td><%= "#{vehicle.maker_year}/#{vehicle.model_year}" %></td>
+      <td><%= link_to 'editar', edit_vehicle_path(vehicle) %></td>
+    <% end %>
+  </tbody>
+</table>

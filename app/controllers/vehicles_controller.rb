@@ -1,6 +1,10 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update]
 
+  def index
+    @vehicles = Vehicle.all
+  end
+
   def new
     @vehicle = Vehicle.new
   end
