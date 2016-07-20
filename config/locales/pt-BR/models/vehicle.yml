@@ -1,0 +1,28 @@
+pt-BR:
+  activerecord:
+    models:
+      vehicle: 'Veículo'
+    attributes:
+      vehicle:
+        brand: 'Marca'
+        version: 'Versão'
+        maker_year: 'Ano fabricação'
+        model_year: 'Ano modelo'
+        license_plate: 'Placa'
+        city: 'Cidade'
+        uf: 'UF'
+        color: 'Cor'
+        fuel: 'Combustível'
+        renavam: 'Renavam'
+        chassi: 'Chassi'
+        owner: 'Proprietário'
+        old_license_plate: 'Placa anterior'
+        status: 'Status'
+    errors:
+      models:
+        vehicle:
+          attributes:
+            license_plate:
+              invalid: 'deve ser XXX-0000'
+            old_license_plate:
+              invalid: 'deve ser XXX-0000'
