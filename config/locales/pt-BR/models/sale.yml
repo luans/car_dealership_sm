@@ -1,0 +1,29 @@
+pt-BR:
+  activerecord:
+    models:
+      sale: Venda
+    attributes:
+      sale:
+        vehicle: Veículo
+        seller: Vendedor
+        sale_price: Preço de venda
+        sale_date: Data da venda
+        purchaser: Comprador
+        purchase_price: Preço de compra
+        purchase_date: Data da compra
+        incoming_invoice_number: NFE de entrada
+        incoming_invoice_date: Data de entrada NFE
+        output_invoice_number: NFE de saída
+        output_invoice_date: Data de saída NFE
+        brokerage: Corretagem
+        observation: Observação
+    errors:
+      models:
+        sale:
+          attributes:
+            purchase_date:
+              greater_than_or_equal_to_sale_date: deve ser maior ou igual a data de venda
+            output_invoice_date:
+              greater_than_or_equal_to_incoming_invoice_date: deve ser maior ou igual a data de entrada NFE
+            output_invoice_number:
+              cannot_be_equal_to_incoming_invoice_number: não deve ser igual a NFE de entrada

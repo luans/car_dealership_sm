@@ -10,6 +10,7 @@ RSpec.describe Vehicle, type: :model do
   end
 
   it { is_expected.to be_valid }
+  it { is_expected.to have_many(:sales) }
   it { is_expected.to validate_presence_of(:brand) }
   it { is_expected.to validate_presence_of(:version) }
   it { is_expected.to validate_presence_of(:model_year) }
@@ -21,6 +22,15 @@ RSpec.describe Vehicle, type: :model do
   it { is_expected.to validate_uniqueness_of(:renavam).case_insensitive }
   it { is_expected.to validate_length_of(:license_plate).is_equal_to(8) }
   it { is_expected.to enumerize(:status).in(:stock, :sold) }
+
+  it '#to_s' do
+    subject.brand = 'Mitsubishi'
+    subject.version = 'Lancer 2.0 16v AT'
+    subject.maker_year = 2012
+    subject.model_year = 2013
+
+    expect(subject.to_s).to eq 'Mitsubishi Lancer 2.0 16v AT - 2012/2013'
+  end
 
   describe 'validation' do
     it "license plate can't be different of format AAA-0000" do

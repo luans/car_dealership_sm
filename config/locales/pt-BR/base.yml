@@ -1,5 +1,8 @@
 ---
 pt-BR:
+  boolean:
+    'true': "sim"
+    'false': "não"
   date:
     abbr_day_names:
     - Dom
@@ -125,6 +128,7 @@ pt-BR:
       too_short: 'é muito curto (mínimo: %{count} caracteres)'
       wrong_length: não possui o tamanho esperado (%{count} caracteres)
       other_than: deve ser diferente de %{count}
+      not_in_the_future: não deve ser no futuro
     template:
       body: 'Por favor, verifique o(s) seguinte(s) campo(s):'
       header:
