@@ -1,0 +1,12 @@
+pt-BR:
+  vehicles:
+    index:
+      title: 'Listagem de veículos'
+      list:
+        brand: 'Marca'
+        version: 'Versão'
+        year_model: 'Ano/Modelo'
+    new:
+      title: 'Criar veículo'
+    edit:
+      title: 'Editar veículo'

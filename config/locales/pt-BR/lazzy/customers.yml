@@ -1,0 +1,11 @@
+pt-BR:
+  customers:
+    index:
+      title: Listagem de clientes
+      list:
+        name: 'Nome'
+        cpf: 'CPF'
+    new:
+      title: 'Criar cliente'
+    edit:
+      title: 'Editar cliente'

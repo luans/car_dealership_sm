@@ -1,0 +1,13 @@
+pt-BR:
+  navbar:
+    brand_name: CarDealership
+    menu:
+      vehicles: Veículos
+      customers: Clientes
+      dropdown:
+        customer:
+          list: Listar clientes
+          create: Cadastrar cliente
+        vehicle:
+          list: Listar veículos
+          create: Cadastrar veículo

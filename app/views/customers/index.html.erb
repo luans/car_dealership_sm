@@ -1,10 +1,10 @@
-<h1>Listagem de clientes</h1>
+<h1><%= t('.title') %></h1>
 
 <table>
   <thread>
     <tr>
-      <th>Nome</th>
-      <th>CPF</th>
+      <th><%= t('.list.name') %></th>
+      <th><%= t('.list.cpf') %></th>
       <th></th>
     </tr>
   </thread>
@@ -12,7 +12,7 @@
     <%= content_tag_for :tr, @customers do |customer| %>
       <td><%= customer.full_name %></td>
       <td><%= customer.cpf %></td>
-      <td><%= link_to 'editar', edit_customer_path(customer) %></td>
+      <td><%= link_to t(:edit, scope: 'actions'), edit_customer_path(customer) %></td>
     <% end %>
   </tbody>
 </table>
