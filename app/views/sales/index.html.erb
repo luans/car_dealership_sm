@@ -1,0 +1,23 @@
+<h1>t('.title')</h1>
+
+<table>
+  <thread>
+    <tr>
+      <th><%= Sale.human_attribute_name(:seller) %></th>
+      <th><%= Sale.human_attribute_name(:purchaser) %></th>
+      <th><%= Sale.human_attribute_name(:vehicle) %></th>
+      <th><%= Sale.human_attribute_name(:sale_date) %></th>
+      <th colspan='2'></th>
+    </tr>
+  </thread>
+  <tbody>
+    <%= content_tag_for :tr, @sales do |sale| %>
+      <td><%= sale.seller %></td>
+      <td><%= sale.purchaser %></td>
+      <td><%= sale.vehicle %></td>
+      <td><%= l sale.purchase_date %></td>
+      <td><%= link_to t(:show, scope: 'actions'), sale_path(sale) %></td>
+      <td><%= link_to t(:edit, scope: 'actions'), edit_sale_path(sale) %></td>
+    <% end %>
+  </tbody>
+</table>

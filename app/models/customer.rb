@@ -1,4 +1,7 @@
 class Customer < ActiveRecord::Base
+  has_many :sales, foreign_key: :seller_id
+  has_many :purchases, class_name: :Sale, foreign_key: :purchaser_id
+
   validates_presence_of :full_name, :cpf
   validates_length_of :place_birth_uf, is: 2
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
@@ -6,6 +9,10 @@ class Customer < ActiveRecord::Base
   validates_uniqueness_of :cpf, case_sensitive: false
   validate :old_enough
   validate :rg_expedition_date
+
+  def to_s
+    full_name
+  end
 
   private
 

@@ -11,3 +11,6 @@ pt-BR:
         vehicle:
           list: Listar veículos
           create: Cadastrar veículo
+        sale:
+          list: Listar vendas
+          create: Cadastrar vendas

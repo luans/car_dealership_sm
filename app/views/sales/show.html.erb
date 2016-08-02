@@ -1,0 +1,16 @@
+<%= @sale.vehicle.brand %>
+<%= @sale.vehicle.version %>
+<%= @sale.vehicle.maker_year %>
+<%= @sale.vehicle.model_year %>
+<%= @sale.seller.full_name %>
+<%= number_to_currency @sale.sale_price %>
+<%= l @sale.sale_date %>
+<%= @sale.purchaser.full_name %>
+<%= number_to_currency @sale.purchase_price %>
+<%= l @sale.purchase_date %>
+<%= @sale.incoming_invoice_number %>
+<%= l @sale.incoming_invoice_date %>
+<%= @sale.output_invoice_number %>
+<%= l @sale.output_invoice_date %>
+<%= t @sale.brokerage.to_s, scope: :boolean %>
+<%= @sale.observation %>

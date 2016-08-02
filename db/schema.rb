@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717203003) do
+ActiveRecord::Schema.define(version: 20160721024331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,28 @@ ActiveRecord::Schema.define(version: 20160717203003) do
     t.datetime "updated_at"
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.integer  "vehicle_id",                                      null: false
+    t.integer  "seller_id",                                       null: false
+    t.decimal  "sale_price",              precision: 8, scale: 2, null: false
+    t.date     "sale_date",                                       null: false
+    t.string   "incoming_invoice_number"
+    t.date     "incoming_invoice_date"
+    t.integer  "purchaser_id"
+    t.decimal  "purchase_price",          precision: 8, scale: 2
+    t.date     "purchase_date"
+    t.string   "output_invoice_number"
+    t.date     "output_invoice_date"
+    t.boolean  "brokerage"
+    t.text     "observation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sales", ["purchaser_id"], name: "index_sales_on_purchaser_id", using: :btree
+  add_index "sales", ["seller_id"], name: "index_sales_on_seller_id", using: :btree
+  add_index "sales", ["vehicle_id"], name: "index_sales_on_vehicle_id", using: :btree
+
   create_table "vehicles", force: :cascade do |t|
     t.string   "brand",                       null: false
     t.string   "version",                     null: false
@@ -60,4 +82,7 @@ ActiveRecord::Schema.define(version: 20160717203003) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "sales", "customers", column: "purchaser_id"
+  add_foreign_key "sales", "customers", column: "seller_id"
+  add_foreign_key "sales", "vehicles"
 end

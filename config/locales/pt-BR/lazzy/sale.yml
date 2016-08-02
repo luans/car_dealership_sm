@@ -1,0 +1,11 @@
+pt-BR:
+  sales:
+    index:
+      title: Listagem de vendas
+      list:
+        name: 'Nome'
+        cpf: 'CPF'
+    new:
+      title: 'Criar venda'
+    edit:
+      title: 'Editar venda'

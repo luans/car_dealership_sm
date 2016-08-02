@@ -33,6 +33,15 @@
               <%= active_link_to i18n.t('menu.dropdown.customer.list'), customers_path %>
             </ul><!-- /.dropdown-menu -->
           </li><!-- /.dropdown -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Vendas <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <%= active_link_to i18n.t('menu.dropdown.sale.create'), new_sale_path %>
+              <%= active_link_to i18n.t('menu.dropdown.sale.list'), sales_path %>
+            </ul><!-- /.dropdown-menu -->
+          </li><!-- /.dropdown -->
         </ul><!-- /.nav.navbar-nav -->
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

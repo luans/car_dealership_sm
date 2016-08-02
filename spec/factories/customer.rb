@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :customer do
-    full_name 'Customer Test'
-    cpf '000.000.000-00'
+    full_name
+    cpf
     birth_date '12/02/1990'
     rg '2.341.231'
     rg_sender 'SSP'
@@ -19,6 +19,6 @@ FactoryGirl.define do
     state 'PI'
     phone '(86) 3232-3201'
     cell_phone '(86) 99900-1213'
-    email 'customer@test.com'
+    email
   end
 end
