@@ -2,3 +2,5 @@ pt-BR:
   actions:
     edit: 'editar'
     show: 'mostrar'
+    login: 'Entrar'
+    logout: 'Sair'

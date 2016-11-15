@@ -2,7 +2,10 @@ require 'rails_helper'
 
 feature 'Create a sale' do
   before do
+    sign_in create(:user)
+
     visit root_path
+
     click_on 'Vendas'
     click_on 'Cadastrar venda'
   end

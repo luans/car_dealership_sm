@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature Customer do
   before do
+    sign_in create(:user)
     visit root_path
   end
 
