@@ -1,9 +1,9 @@
 <%= @customer.full_name %>
 <%= @customer.cpf %>
-<%= l @customer.birth_date %>
+<%= l(@customer.birth_date) if @customer.birth_date %>
 <%= @customer.rg %>
 <%= @customer.rg_sender %>
-<%= l @customer.rg_expedition %>
+<%= l(@customer.rg_expedition) if @customer.rg_expedition %>
 <%= @customer.place_birth %>
 <%= @customer.place_birth_uf %>
 <%= @customer.nacionality %>
