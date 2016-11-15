@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature Vehicle do
   before do
+    sign_in create(:user)
     visit root_path
   end
 

@@ -18,6 +18,8 @@ feature 'Show a vehicle' do
       observation: 'Some observations'
     )
 
+    sign_in create(:user)
+
     visit root_path
 
     click_on 'Vendas'

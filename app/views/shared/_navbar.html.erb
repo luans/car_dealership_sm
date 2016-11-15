@@ -43,6 +43,16 @@
             </ul><!-- /.dropdown-menu -->
           </li><!-- /.dropdown -->
         </ul><!-- /.nav.navbar-nav -->
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.email, '#' %></li>
+            <li><%= link_to t('actions.logout'), destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to t('actions.login'), new_user_session_path %></li>
+          <% end %>
+        </ul><!-- nav navbar-nav navbar-right -->
+
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
