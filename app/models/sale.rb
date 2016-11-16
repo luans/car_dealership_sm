@@ -5,11 +5,11 @@ class Sale < ActiveRecord::Base
 
   validates_presence_of :vehicle, :seller, :sale_price, :sale_date, :purchaser, :purchase_price, :purchase_date
   validates_inclusion_of :brokerage, in: [true, false], message: :invalid
-  validates_numericality_of :incoming_invoice_number, :output_invoice_number, only_integer: true, allow_nil: true
+  validates_numericality_of :incoming_invoice_number, :output_invoice_number, only_integer: true, allow_blank: true
   validates_numericality_of :output_invoice_number,
                             other_than: ->(sale){ sale.incoming_invoice_number.to_i },
                             message: :cannot_be_equal_to_incoming_invoice_number,
-                            allow_nil: true
+                            allow_blank: true
 
   validates :sale_date, date: { allow_nil: true }
   validates :purchase_date, date: {
