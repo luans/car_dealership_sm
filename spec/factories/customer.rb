@@ -2,6 +2,9 @@ FactoryGirl.define do
   factory :customer do
     full_name
     cpf
+  end
+
+  trait :full do
     birth_date '12/02/1990'
     rg '2.341.231'
     rg_sender 'SSP'

@@ -18,9 +18,17 @@ RSpec.describe Customer, type: :model do
     it { is_expected.to have_many(:purchases).class_name('Sale').with_foreign_key('purchaser_id') }
     it { is_expected.to validate_presence_of(:full_name) }
     it { is_expected.to validate_presence_of(:cpf) }
-    it { is_expected.to validate_length_of(:place_birth_uf).is_equal_to(2) }
     it { is_expected.to validate_uniqueness_of(:cpf).case_insensitive }
-    it { is_expected.to validate_uniqueness_of(:email) }
+
+    context 'when email is present' do
+      before { subject.email = 'user@test.com' }
+      it { is_expected.to validate_uniqueness_of(:email) }
+    end
+
+    context 'when place_birth_uf is present' do
+      before { subject.place_birth_uf = 'PI' }
+      it { is_expected.to validate_length_of(:place_birth_uf).is_equal_to(2) }
+    end
 
     it 'should require email has a valid format' do
       subject.email = 'jhon.doe@example.com'

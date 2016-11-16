@@ -8,7 +8,9 @@ class Vehicle < ActiveRecord::Base
   has_many :sales
 
   validates_presence_of :license_plate, :brand, :version, :model_year, :maker_year, :status
-  validates_uniqueness_of :renavam, :license_plate, :chassi, case_sensitive: false
+  validates_uniqueness_of :license_plate, case_sensitive: false
+  validates_uniqueness_of :chassi, case_sensitive: false, allow_blank: true
+  validates_uniqueness_of :renavam, case_sensitive: false, allow_blank: true
   validates_length_of :license_plate, is: 8
   validates_format_of :license_plate, with: /\A[[:alpha:]]{3}-\d{4}\z/
   validates_format_of :old_license_plate, with: /\A[[:alpha:]]{3}-\d{4}\z/, allow_blank: true
