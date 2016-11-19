@@ -10,19 +10,14 @@
 
   <%= render 'shared/navbar' %>
 
-  <div class='container-fluid'>
+  <div class="application-body">
 
-    <% if notice.present? %>
-      <div><%= notice %></div>
-    <% end %>
+    <%= render 'layouts/flash_messages' %>
 
-    <% if alert.present? %>
-      <div><%= alert %></div>
-    <% end %>
-
-    <%= yield %>
-
-  </div><!-- /.container-fluid -->
+    <div class="container" id="application-container">
+      <%= yield %>
+    </div><!-- /.container -->
+  </div><!-- /.application-body -->
 
 </body>
 </html>
