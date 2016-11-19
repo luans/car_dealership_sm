@@ -3,106 +3,59 @@
     <%= simple_form_for @sale do |f| %>
       <%= f.error_notification %>
 
-      <fieldset name='vehicle-informations'>
-        <legend>Vehicle informations</legend>
-        <%= f.simple_fields_for :vehicle_attributes, @sale.vehicle do |fv| %>
-          <div class='form-inputs'>
-            <%= fv.input :brand %>
-            <%= fv.input :version %>
-            <%= fv.input :maker_year %>
-            <%= fv.input :model_year %>
-            <%= fv.input :license_plate %>
-            <%= fv.input :city %>
-            <%= fv.input :uf %>
-            <%= fv.input :color %>
-            <%= fv.input :fuel %>
-            <%= fv.input :renavam %>
-            <%= fv.input :chassi %>
-            <%= fv.input :owner %>
-            <%= fv.input :old_license_plate %>
-          </div><!-- /.form-inputs -->
-        <% end %>
-      </fieldset><!-- /.vehicle-fields -->
+      <% I18n.with_options scope: 'forms.sale' do |i18n| %>
+        <fieldset name='vehicle-informations'>
+          <legend><%= i18n.t('vehicle_informations') %></legend>
+          <%= f.simple_fields_for :vehicle_attributes, @sale.vehicle do |fv| %>
+            <%= render partial: 'vehicles/form_fields', locals: { form: fv} %>
+          <% end %>
+        </fieldset><!-- /.vehicle-fields -->
 
-      <fieldset name='seller-informations'>
-        <legend>Seller informations</legend>
-        <%= f.simple_fields_for :seller_attributes, @sale.seller do |fs| %>
-          <div class='form-inputs'>
-            <%= fs.input :full_name %>
-            <%= fs.input :cpf %>
-            <%= fs.input :birth_date, as: :string %>
-            <%= fs.input :rg %>
-            <%= fs.input :rg_sender %>
-            <%= fs.input :rg_expedition, as: :string %>
-            <%= fs.input :place_birth %>
-            <%= fs.input :place_birth_uf %>
-            <%= fs.input :nacionality %>
-            <%= fs.input :mother %>
-            <%= fs.input :father %>
-            <%= fs.input :postal_code %>
-            <%= fs.input :address %>
-            <%= fs.input :neighborhood %>
-            <%= fs.input :adjunct %>
-            <%= fs.input :city %>
-            <%= fs.input :state %>
-            <%= fs.input :phone %>
-            <%= fs.input :cell_phone %>
-            <%= fs.input :email %>
-          </div><!-- /.form-inputs -->
-        <% end %>
+        <fieldset name='seller-informations'>
+          <legend><%= i18n.t('seller_informations') %></legend>
+          <%= f.simple_fields_for :seller_attributes, @sale.seller do |fs| %>
+            <%= render partial: 'customers/form_fields', locals: { form: fs } %>
+          <% end %>
+        </fieldset><!-- /.seller-fields -->
 
-        <div class='form-inputs'>
-          <%= f.input :sale_price %>
-          <%= f.input :sale_date, as: :string %>
-        </div><!-- /.form-inputs -->
-      </fieldset><!-- /.seller-fields -->
+        <fieldset name='purchaser-informations'>
+          <legend><%= i18n.t('purchaser_informations') %></legend>
+          <%= f.simple_fields_for :purchaser_attributes, @sale.purchaser do |fp| %>
+            <%= render partial: 'customers/form_fields', locals: { form: fp } %>
+          <% end %>
+        </fieldset><!-- /.purchaser-fields -->
 
-      <fieldset name='purchaser-informations'>
-        <legend>Purchaser informations</legend>
-        <%= f.simple_fields_for :purchaser_attributes, @sale.purchaser do |fs| %>
-          <div class='form-inputs'>
-            <%= fs.input :full_name %>
-            <%= fs.input :cpf %>
-            <%= fs.input :birth_date, as: :string %>
-            <%= fs.input :rg %>
-            <%= fs.input :rg_sender %>
-            <%= fs.input :rg_expedition, as: :string %>
-            <%= fs.input :place_birth %>
-            <%= fs.input :place_birth_uf %>
-            <%= fs.input :nacionality %>
-            <%= fs.input :mother %>
-            <%= fs.input :father %>
-            <%= fs.input :postal_code %>
-            <%= fs.input :address %>
-            <%= fs.input :neighborhood %>
-            <%= fs.input :adjunct %>
-            <%= fs.input :city %>
-            <%= fs.input :state %>
-            <%= fs.input :phone %>
-            <%= fs.input :cell_phone %>
-            <%= fs.input :email %>
-          </div><!-- /.form-inputs -->
-        <% end %>
+        <fieldset name='sale-informations'>
+          <legend><%= i18n.t('sale_informations') %></legend>
 
-        <div class='form-inputs'>
-          <%= f.input :purchase_price %>
-          <%= f.input :purchase_date, as: :string %>
-        </div><!-- /.form-inputs -->
-      </fieldset><!-- /.purchaser-fields -->
+          <div class='row'>
+            <div class='form-inputs'>
+              <div class='col-md-2'><%= f.input :sale_price %></div>
+              <div class='col-md-2'><%= f.input :sale_date, as: :string %></div>
+              <div class='col-md-2'><%= f.input :incoming_invoice_number %></div>
+              <div class='col-md-2'><%= f.input :incoming_invoice_date, as: :string %></div>
+            </div><!-- /.form-inputs' -->
+          </div><!-- /.row -->
 
-      <fieldset name='sale-informations'>
-        <legend>Sale informations</legend>
-        <%= f.input :incoming_invoice_number %>
-        <%= f.input :incoming_invoice_date, as: :string %>
-        <%= f.input :output_invoice_number %>
-        <%= f.input :output_invoice_date, as: :string %>
-        <%= f.input :brokerage, as: :boolean %>
-        <%= f.input :observation %>
-      </fieldset>
+          <div class='row'>
+            <div class='form-inputs'>
+              <div class='col-md-2'><%= f.input :purchase_price %></div>
+              <div class='col-md-2'><%= f.input :purchase_date, as: :string %></div>
+              <div class='col-md-2'><%= f.input :output_invoice_number %></div>
+              <div class='col-md-2'><%= f.input :output_invoice_date, as: :string %></div>
+            </div><!-- /.form-inputs' -->
+          </div><!-- /.row -->
 
-      <div class='form-actions'>
-        <%= f.button :submit %>
-      </div><!-- /.form-actions -->
-    <% end %>
+          <div class='row'>
+            <div class='form-inputs'>
+              <div class='col-md-5'><%= f.input :observation %></div>
+              <div class='col-md-2'><%= f.input :brokerage, as: :boolean %></div>
+            </div><!-- /.form-inputs' -->
+          </div><!-- /.row -->
+        </fieldset>
+
+        <div class='form-actions'><%= f.button :submit %></div>
+      <% end %><!-- /I18n.with_default -->
+    <% end %><!-- /simple_form_for -->
   </div><!-- /.col-lg-12 -->
 </div><!-- /.row -->

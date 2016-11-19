@@ -68,9 +68,6 @@ feature 'Update a sale' do
       fill_in 'Telefone', with: '(86) 3232-3234'
       fill_in 'Celular', with: '(86) 99900-1236'
       fill_in 'E-mail', with: 'seller_edited@test.com'
-
-      fill_in 'Preço de venda', with: 21000.0
-      fill_in 'Data da venda', with: '10/01/2015'
     end
 
     within "fieldset[name='purchaser-informations']" do
@@ -96,19 +93,21 @@ feature 'Update a sale' do
       fill_in 'Telefone', with: '(86) 3232-3213'
       fill_in 'Celular', with: '(86) 99900-1223'
       fill_in 'E-mail', with: 'purchaser_edited@test.com'
-
-      fill_in 'Preço de compra', with: 23000.0
-      fill_in 'Data da compra', with: '20/01/2015'
     end
 
     within "fieldset[name='sale-informations']" do
+      fill_in 'Preço de venda', with: 21000.0
+      fill_in 'Data da venda', with: '10/01/2015'
       fill_in 'NFE de entrada', with: '123456'
       fill_in 'Data de entrada NFE', with: '11/01/2015'
-      fill_in 'Data de entrada NFE', with: '11/01/2015'
+
+      fill_in 'Preço de compra', with: 23000.0
+      fill_in 'Data da compra', with: '20/01/2015'
       fill_in 'NFE de saída', with: '654321'
       fill_in 'Data de saída NFE', with: '21/01/2015'
-      uncheck 'Corretagem'
+
       fill_in 'Observação', with: 'Observation about sale edited'
+      uncheck 'Corretagem'
     end
 
     click_on 'Atualizar Venda'
