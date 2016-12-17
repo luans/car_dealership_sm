@@ -10,7 +10,7 @@
           data-vehicle-fields-handler>
           <legend><%= i18n.t('vehicle_informations') %></legend>
           <%= f.simple_fields_for :vehicle_attributes, @sale.vehicle do |fv| %>
-            <%= f.input :vehicle_id, as: :hidden, input_html: {"v-model": 'vehicle.id'} %>
+            <%= f.input :vehicle_id, as: :hidden, vue: {"v-model": 'vehicle.id'} %>
             <div class='row'>
               <div class='form-inputs'>
                 <div class='col-md-2'>
