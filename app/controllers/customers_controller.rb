@@ -1,8 +1,12 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update]
 
+  respond_to :json, only: :index
+
   def index
     @customers = Customer.all
+    @customers = Customer.where(cpf: params[:cpf]) if params[:cpf]
+    respond_with @customers
   end
 
   def new

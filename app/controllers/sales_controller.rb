@@ -33,10 +33,11 @@ class SalesController < ApplicationController
 
   def sale_params
     params.require(:sale).permit(
+      :vehicle_id, :seller_id, :purchaser_id,
       :vehicle, :seller, :sale_price, :sale_date, :purchaser, :purchase_price, :purchase_date, :brokerage,
       :incoming_invoice_number, :incoming_invoice_date, :output_invoice_number, :output_invoice_date, :observation,
       vehicle_attributes: [
-        :brand, :version, :maker_year, :model_year, :license_plate, :city,
+        :id, :brand, :version, :maker_year, :model_year, :license_plate, :city,
         :uf, :color, :fuel, :renavam, :chassi, :owner, :old_license_plate
       ],
       seller_attributes: customer_attributes,
@@ -46,7 +47,7 @@ class SalesController < ApplicationController
 
   def customer_attributes
     [
-      :full_name, :cpf, :birth_date, :rg, :rg_sender, :rg_expedition,
+      :id, :full_name, :cpf, :birth_date, :rg, :rg_sender, :rg_expedition,
       :place_birth, :place_birth_uf, :nacionality, :mother, :father, :postal_code, :address,
       :neighborhood, :adjunct, :city, :state, :phone, :cell_phone, :email
     ]
