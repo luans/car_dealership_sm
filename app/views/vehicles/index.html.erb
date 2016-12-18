@@ -1,11 +1,11 @@
 <h1><%= t('.title') %></h1>
 
-<table>
+<table class='table table-hover'>
   <thread>
     <tr>
-      <th><%= t('.list.brand') %></th>
-      <th><%= t('.list.version') %></th>
-      <th><%= t('.list.year_model') %></th>
+      <th><%= Vehicle.human_attribute_name(:brand) %></th>
+      <th><%= Vehicle.human_attribute_name(:version) %></th>
+      <th><%= Vehicle.human_attribute_name(:model_year) %></th>
       <th></th>
     </tr>
   </thread>
