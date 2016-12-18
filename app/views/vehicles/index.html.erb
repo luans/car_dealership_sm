@@ -6,7 +6,7 @@
       <th><%= Vehicle.human_attribute_name(:brand) %></th>
       <th><%= Vehicle.human_attribute_name(:version) %></th>
       <th><%= Vehicle.human_attribute_name(:model_year) %></th>
-      <th></th>
+      <th colspan='2'></th>
     </tr>
   </thread>
   <tbody>
@@ -14,6 +14,7 @@
       <td><%= vehicle.brand %></td>
       <td><%= vehicle.version %></td>
       <td><%= "#{vehicle.maker_year}/#{vehicle.model_year}" %></td>
+      <td><%= link_to t(:show, scope: 'actions'), vehicle_path(vehicle) %></td>
       <td><%= link_to t(:edit, scope: 'actions'), edit_vehicle_path(vehicle) %></td>
     <% end %>
   </tbody>
