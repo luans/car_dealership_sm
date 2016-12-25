@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :vehicles
-  resources :customers
+  resources :vehicles, except: [:destroy]
+  resources :customers, except: [:destroy]
   resources :sales, only: [:index, :new, :create, :show]
 end
