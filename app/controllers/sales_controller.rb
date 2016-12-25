@@ -10,16 +10,6 @@ class SalesController < ApplicationController
     @sale.build_purchaser
   end
 
-  def edit
-    @sale = Sale.find(params[:id])
-  end
-
-  def update
-    @sale = Sale.find(params[:id])
-    @sale.update(sale_params)
-    respond_with @sale
-  end
-
   def create
     @sale = SaleCreator.create(sale_params)
     respond_with @sale

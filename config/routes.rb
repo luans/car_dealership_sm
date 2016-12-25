@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   resources :vehicles
   resources :customers
-  resources :sales
+  resources :sales, only: [:index, :new, :create, :show]
 end
