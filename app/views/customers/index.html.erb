@@ -1,19 +1,25 @@
-<h1><%= t('.title') %></h1>
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='page-header'>
+      <h3><%= t('.title') %></h3>
+    </div><!-- /.page-header -->
 
-<table class='table table-hover'>
-  <thread>
-    <tr>
-      <th><%= Customer.human_attribute_name(:full_name) %></th>
-      <th><%= Customer.human_attribute_name(:cpf) %></th>
-      <th colspan='2'></th>
-    </tr>
-  </thread>
-  <tbody>
-    <%= content_tag_for :tr, @customers do |customer| %>
-      <td><%= customer.full_name %></td>
-      <td><%= customer.cpf %></td>
-      <td><%= link_to t(:show, scope: 'actions'), customer_path(customer) %></td>
-      <td><%= link_to t(:edit, scope: 'actions'), edit_customer_path(customer) %></td>
-    <% end %>
-  </tbody>
-</table>
+    <table class='table table-hover'>
+      <thread>
+        <tr>
+          <th><%= Customer.human_attribute_name(:full_name) %></th>
+          <th><%= Customer.human_attribute_name(:cpf) %></th>
+          <th colspan='2'></th>
+        </tr>
+      </thread>
+      <tbody>
+        <%= content_tag_for :tr, @customers do |customer| %>
+          <td><%= customer.full_name %></td>
+          <td><%= customer.cpf %></td>
+          <td><%= link_to t(:show, scope: 'actions'), customer_path(customer) %></td>
+          <td><%= link_to t(:edit, scope: 'actions'), edit_customer_path(customer) %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.col-md-12 -->
+</div><!-- /.row -->
