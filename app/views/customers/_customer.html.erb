@@ -1,0 +1,26 @@
+<div class='row'>
+  <div class='col-md-5'><p><%= label_value(customer, :full_name) %></p></div>
+  <div class='col-md-2'><p><%= label_value(customer, :cpf) %></p></div>
+  <div class='col-md-3'>
+    <p><%= label_value(customer, :birth_date) { l(customer.birth_date) if customer.birth_date } %></p>
+  </div>
+  <div class='col-md-2'><p><%= label_value(customer, :rg) %></p></div>
+  <div class='col-md-2'><p><%= label_value(customer, :rg_sender) %></p></div>
+  <div class='col-md-3'>
+    <p><%= label_value(customer, :rg_expedition) { l(customer.rg_expedition) if customer.rg_expedition } %></p>
+  </div>
+  <div class='col-md-3'><p><%= label_value(customer, :place_birth) %></p></div>
+  <div class='col-md-1'><p><%= label_value(customer, :place_birth_uf) %></p></div>
+  <div class='col-md-2'><p><%= label_value(customer, :nacionality) %></p></div>
+  <div class='col-md-4'><p><%= label_value(customer, :mother) %></p></div>
+  <div class='col-md-4'><p><%= label_value(customer, :father) %></p></div>
+  <div class='col-md-2'><p><%= label_value(customer, :postal_code) %></p></div>
+  <div class='col-md-4'><p><%= label_value(customer, :address) %></p></div>
+  <div class='col-md-3'><p><%= label_value(customer, :neighborhood) %></p></div>
+  <div class='col-md-3'><p><%= label_value(customer, :adjunct) %></p></div>
+  <div class='col-md-3'><p><%= label_value(customer, :city) %></p></div>
+  <div class='col-md-2'><p><%= label_value(customer, :state) %></p></div>
+  <div class='col-md-3'><p><%= label_value(customer, :phone) %></p></div>
+  <div class='col-md-3'><p><%= label_value(customer, :cell_phone) %></p></div>
+  <div class='col-md-3'><p><%= label_value(customer, :email) %></p></div>
+</div><!-- ./row -->

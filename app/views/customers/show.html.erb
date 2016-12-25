@@ -1,20 +1,10 @@
-<%= @customer.full_name %>
-<%= @customer.cpf %>
-<%= l(@customer.birth_date) if @customer.birth_date %>
-<%= @customer.rg %>
-<%= @customer.rg_sender %>
-<%= l(@customer.rg_expedition) if @customer.rg_expedition %>
-<%= @customer.place_birth %>
-<%= @customer.place_birth_uf %>
-<%= @customer.nacionality %>
-<%= @customer.mother %>
-<%= @customer.father %>
-<%= @customer.postal_code %>
-<%= @customer.address %>
-<%= @customer.neighborhood %>
-<%= @customer.adjunct %>
-<%= @customer.city %>
-<%= @customer.state %>
-<%= @customer.phone %>
-<%= @customer.cell_phone %>
-<%= @customer.email %>
+
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='page-header'>
+      <h3><%= Customer.model_name.human %></h3>
+    </div><!-- /.page-header -->
+
+    <%= render @customer %>
+  </div>
+</div>

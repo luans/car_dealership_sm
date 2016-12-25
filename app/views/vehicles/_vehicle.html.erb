@@ -1,0 +1,16 @@
+<div class='row'>
+  <div class='col-md-2'><p><%= label_value(vehicle, :brand) %></p></div>
+  <div class='col-md-4'><p><%= label_value(vehicle, :version) %></p></div>
+  <div class='col-md-2'><p><%= label_value(vehicle, :maker_year) %></p></div>
+  <div class='col-md-2'><p><%= label_value(vehicle, :model_year) %></p></div>
+  <div class='col-md-2'><p><%= label_value(vehicle, :license_plate) %></p></div>
+  <div class='col-md-4'><p><%= label_value(vehicle, :city) %></p></div>
+  <div class='col-md-1'><p><%= label_value(vehicle, :uf) %></p></div>
+  <div class='col-md-2'><p><%= label_value(vehicle, :color) %></p></div>
+  <div class='col-md-3'><p><%= label_value(vehicle, :fuel) %></p></div>
+  <div class='col-md-2'><p><%= label_value(vehicle, :old_license_plate) %></p></div>
+  <div class='col-md-3'><p><%= label_value(vehicle, :renavam) %></p></div>
+  <div class='col-md-3'><p><%= label_value(vehicle, :chassi) %></p></div>
+  <div class='col-md-4'><p><%= label_value(vehicle, :owner) %></p></div>
+  <div class='col-md-2'><p><%= label_value(vehicle, :status) { vehicle.status_text } %></p></div>
+</div><!-- ./row -->
