@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.mask.min
 //= require bootstrap-sprockets
 //= require vue
+//= require masks
 //= require forms/sale_form_handler

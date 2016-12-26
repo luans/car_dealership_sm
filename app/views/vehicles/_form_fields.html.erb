@@ -1,6 +1,8 @@
 <div class='row'>
   <div class='form-inputs'>
-    <div class='col-md-2'><%= form.input :license_plate, input_html: { maxlength: 8 } %></div>
+    <div class='col-md-2'>
+      <%= form.input :license_plate, input_html: { maxlength: 8, class: 'license_plate' } %>
+    </div><!-- /.col-md-2 -->
   </div><!-- /.form-inputs -->
 </div><!-- /.row -->
 
@@ -8,8 +10,8 @@
   <div class='form-inputs'>
     <div class='col-md-3'><%= form.input :brand %></div>
     <div class='col-md-3'><%= form.input :version %></div>
-    <div class='col-md-2'><%= form.input :maker_year %></div>
-    <div class='col-md-2'><%= form.input :model_year %></div>
+    <div class='col-md-2'><%= form.input :maker_year, input_html: { class: 'year' } %></div>
+    <div class='col-md-2'><%= form.input :model_year, input_html: { class: 'year' } %></div>
   </div><!-- /.form-inputs' -->
 </div><!-- /.row -->
 
@@ -25,8 +27,8 @@
 <div class='row'>
   <div class='form-inputs'>
     <div class='col-md-3'><%= form.input :city %></div>
-    <div class='col-md-1'><%= form.input :uf %></div>
+    <div class='col-md-1'><%= form.input :uf, input_html: { class: 'uf' } %></div>
     <div class='col-md-3'><%= form.input :owner %></div>
-    <div class='col-md-3'><%= form.input :old_license_plate %></div>
+    <div class='col-md-3'><%= form.input :old_license_plate, input_html: { class: 'license_plate' } %></div>
   </div><!-- /.form-inputs' -->
 </div><!-- /.row -->
