@@ -118,7 +118,7 @@ $(document).ready(function() {
 
             jQuery(vue.$refs.salePrice).focus();
           } else {
-            vue.isSellerLoaded = false;
+            vue.isPurchaserLoaded = false;
             jQuery(vue.$refs.purchaserCpf).focus();
           }
         })
