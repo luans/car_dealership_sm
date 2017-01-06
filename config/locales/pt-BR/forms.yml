@@ -1,0 +1,7 @@
+pt-BR:
+  forms:
+    sale:
+      vehicle_informations: 'Informações do veículo'
+      seller_informations: 'Informações do vendedor'
+      purchaser_informations: 'Informações do comprador'
+      sale_informations: 'Informações da venda'

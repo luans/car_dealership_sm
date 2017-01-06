@@ -48,9 +48,6 @@ feature 'Create a sale' do
       fill_in 'Telefone', with: '(86) 3232-3232'
       fill_in 'Celular', with: '(86) 99900-1234'
       fill_in 'E-mail', with: 'seller@test.com'
-
-      fill_in 'Preço de venda', with: 20000.0
-      fill_in 'Data da venda', with: '10/01/2016'
     end
 
     within "fieldset[name='purchaser-informations']" do
@@ -74,18 +71,21 @@ feature 'Create a sale' do
       fill_in 'Telefone', with: '(86) 3232-3233'
       fill_in 'Celular', with: '(86) 99900-1233'
       fill_in 'E-mail', with: 'purchaser@test.com'
-
-      fill_in 'Preço de compra', with: 22000.0
-      fill_in 'Data da compra', with: '20/01/2016'
     end
 
     within "fieldset[name='sale-informations']" do
+      fill_in 'Preço de venda', with: 20000.0
+      fill_in 'Data da venda', with: '10/01/2016'
       fill_in 'NFE de entrada', with: '123456'
       fill_in 'Data de entrada NFE', with: '21/01/2016'
+
+      fill_in 'Preço de compra', with: 22000.0
+      fill_in 'Data da compra', with: '20/01/2016'
       fill_in 'NFE de saída', with: '123457'
       fill_in 'Data de saída NFE', with: '22/01/2016'
-      check 'Corretagem'
+
       fill_in 'Observação', with: 'Observation about sale'
+      check 'Corretagem'
     end
 
     click_on 'Criar Venda'

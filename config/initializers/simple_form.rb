@@ -163,3 +163,21 @@ SimpleForm.setup do |config|
   # Defines which i18n scope will be used in Simple Form.
   # config.i18n_scope = 'simple_form'
 end
+
+class VueFormBuilder < SimpleForm::FormBuilder
+  def input(attribute_name, options = {}, &block)
+    html_options = {value: nil}
+
+    # Shortcut for vue option instead the use of input_html
+    html_options.merge!(options.delete(:vue)) if options.has_key?(:vue)
+
+    # Add default html_options for all inputs
+    options[:input_html] = if options.has_key?(:input_html)
+                             options[:input_html].merge(html_options)
+                           else
+                             html_options
+                           end
+
+    super(attribute_name, options, &block)
+  end
+end

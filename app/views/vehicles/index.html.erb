@@ -1,20 +1,27 @@
-<h1><%= t('.title') %></h1>
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='page-header'>
+      <h3><%= t('.title') %></h3>
+    </div><!-- /.page-header -->
 
-<table>
-  <thread>
-    <tr>
-      <th><%= t('.list.brand') %></th>
-      <th><%= t('.list.version') %></th>
-      <th><%= t('.list.year_model') %></th>
-      <th></th>
-    </tr>
-  </thread>
-  <tbody>
-    <%= content_tag_for :tr, @vehicles do |vehicle| %>
-      <td><%= vehicle.brand %></td>
-      <td><%= vehicle.version %></td>
-      <td><%= "#{vehicle.maker_year}/#{vehicle.model_year}" %></td>
-      <td><%= link_to t(:edit, scope: 'actions'), edit_vehicle_path(vehicle) %></td>
-    <% end %>
-  </tbody>
-</table>
+    <table class='table table-hover'>
+      <thread>
+        <tr>
+          <th><%= Vehicle.human_attribute_name(:brand) %></th>
+          <th><%= Vehicle.human_attribute_name(:version) %></th>
+          <th><%= Vehicle.human_attribute_name(:model_year) %></th>
+          <th colspan='2'></th>
+        </tr>
+      </thread>
+      <tbody>
+        <%= content_tag_for :tr, @vehicles do |vehicle| %>
+          <td><%= vehicle.brand %></td>
+          <td><%= vehicle.version %></td>
+          <td><%= "#{vehicle.maker_year}/#{vehicle.model_year}" %></td>
+          <td><%= link_to t(:show, scope: 'actions'), vehicle_path(vehicle) %></td>
+          <td><%= link_to t(:edit, scope: 'actions'), edit_vehicle_path(vehicle) %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.col-md-12 -->
+</div><!-- /.row -->

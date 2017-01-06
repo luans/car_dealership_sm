@@ -1,108 +1,247 @@
 <div class='row'>
   <div class='col-lg-12'>
-    <%= simple_form_for @sale do |f| %>
+    <%= vue_form_for @sale, html: {data: {sale_form_handler: true}} do |f| %>
       <%= f.error_notification %>
 
-      <fieldset name='vehicle-informations'>
-        <legend>Vehicle informations</legend>
-        <%= f.simple_fields_for :vehicle_attributes, @sale.vehicle do |fv| %>
-          <div class='form-inputs'>
-            <%= fv.input :brand %>
-            <%= fv.input :version %>
-            <%= fv.input :maker_year %>
-            <%= fv.input :model_year %>
-            <%= fv.input :license_plate %>
-            <%= fv.input :city %>
-            <%= fv.input :uf %>
-            <%= fv.input :color %>
-            <%= fv.input :fuel %>
-            <%= fv.input :renavam %>
-            <%= fv.input :chassi %>
-            <%= fv.input :owner %>
-            <%= fv.input :old_license_plate %>
-          </div><!-- /.form-inputs -->
-        <% end %>
-      </fieldset><!-- /.vehicle-fields -->
+      <% I18n.with_options scope: 'forms.sale' do |i18n| %>
+        <fieldset name='vehicle-informations'
+          data-params='<%= @sale.vehicle.to_json %>'
+          data-fetcher-url='<%= vehicles_path %>'
+          data-vehicle-fields-handler>
+          <legend><%= i18n.t('vehicle_informations') %></legend>
+          <%= f.simple_fields_for :vehicle_attributes, @sale.vehicle do |fv| %>
+            <%= f.input :vehicle_id, as: :hidden, vue: {"v-model": 'vehicle.id'} %>
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-2'>
+                  <%= fv.input :license_plate, input_html: { maxlength: 8, autofocus: true, class: 'license_plate' },
+                    vue: {"v-on:keyup": 'fetchVehicle', 'v-model': 'vehicle.license_plate', ref: 'licensePlate'}
+                  %>
+                </div>
+              </div><!-- /.form-inputs -->
+            </div><!-- /.row -->
 
-      <fieldset name='seller-informations'>
-        <legend>Seller informations</legend>
-        <%= f.simple_fields_for :seller_attributes, @sale.seller do |fs| %>
-          <div class='form-inputs'>
-            <%= fs.input :full_name %>
-            <%= fs.input :cpf %>
-            <%= fs.input :birth_date, as: :string %>
-            <%= fs.input :rg %>
-            <%= fs.input :rg_sender %>
-            <%= fs.input :rg_expedition, as: :string %>
-            <%= fs.input :place_birth %>
-            <%= fs.input :place_birth_uf %>
-            <%= fs.input :nacionality %>
-            <%= fs.input :mother %>
-            <%= fs.input :father %>
-            <%= fs.input :postal_code %>
-            <%= fs.input :address %>
-            <%= fs.input :neighborhood %>
-            <%= fs.input :adjunct %>
-            <%= fs.input :city %>
-            <%= fs.input :state %>
-            <%= fs.input :phone %>
-            <%= fs.input :cell_phone %>
-            <%= fs.input :email %>
-          </div><!-- /.form-inputs -->
-        <% end %>
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'><%= fv.input :brand, vue: {"v-model": 'vehicle.brand', ':disabled': 'isVehicleLoaded', ref: 'brand'} %></div>
+                <div class='col-md-3'><%= fv.input :version, vue: {"v-model": 'vehicle.version', ':disabled': 'isVehicleLoaded'} %></div>
+                <div class='col-md-2'>
+                  <%= fv.input :maker_year, as: :string, vue: {"v-model": 'vehicle.maker_year', ':disabled': 'isVehicleLoaded'},
+                    input_html: { class: 'year'} %>
+                </div><!-- /.col-md-2 -->
+                <div class='col-md-2'>
+                  <%= fv.input :model_year, as: :string, vue: {"v-model": 'vehicle.model_year', ':disabled': 'isVehicleLoaded'},
+                    input_html: { class: 'year'} %>
+                </div><!-- /.col-md-2 -->
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
 
-        <div class='form-inputs'>
-          <%= f.input :sale_price %>
-          <%= f.input :sale_date, as: :string %>
-        </div><!-- /.form-inputs -->
-      </fieldset><!-- /.seller-fields -->
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'><%= fv.input :color, vue: {"v-model": 'vehicle.color', ':disabled': 'isVehicleLoaded'} %></div>
+                <div class='col-md-3'><%= fv.input :fuel, vue: {"v-model": 'vehicle.fuel', ':disabled': 'isVehicleLoaded'} %></div>
+                <div class='col-md-3'><%= fv.input :renavam, vue: {"v-model": 'vehicle.renavam', ':disabled': 'isVehicleLoaded'} %></div>
+                <div class='col-md-3'><%= fv.input :chassi, vue: {"v-model": 'vehicle.chassi', ':disabled': 'isVehicleLoaded'} %></div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
 
-      <fieldset name='purchaser-informations'>
-        <legend>Purchaser informations</legend>
-        <%= f.simple_fields_for :purchaser_attributes, @sale.purchaser do |fs| %>
-          <div class='form-inputs'>
-            <%= fs.input :full_name %>
-            <%= fs.input :cpf %>
-            <%= fs.input :birth_date, as: :string %>
-            <%= fs.input :rg %>
-            <%= fs.input :rg_sender %>
-            <%= fs.input :rg_expedition, as: :string %>
-            <%= fs.input :place_birth %>
-            <%= fs.input :place_birth_uf %>
-            <%= fs.input :nacionality %>
-            <%= fs.input :mother %>
-            <%= fs.input :father %>
-            <%= fs.input :postal_code %>
-            <%= fs.input :address %>
-            <%= fs.input :neighborhood %>
-            <%= fs.input :adjunct %>
-            <%= fs.input :city %>
-            <%= fs.input :state %>
-            <%= fs.input :phone %>
-            <%= fs.input :cell_phone %>
-            <%= fs.input :email %>
-          </div><!-- /.form-inputs -->
-        <% end %>
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'><%= fv.input :city, vue: {"v-model": 'vehicle.city', ':disabled': 'isVehicleLoaded'} %></div>
+                <div class='col-md-1'>
+                  <%= fv.input :uf, vue: {"v-model": 'vehicle.uf', ':disabled': 'isVehicleLoaded'}, input_html: { class: 'uf'} %>
+                </div><!-- /.col-md-1 -->
+                <div class='col-md-3'><%= fv.input :owner, vue: {"v-model": 'vehicle.owner', ':disabled': 'isVehicleLoaded'} %></div>
+                <div class='col-md-3'>
+                  <%= fv.input :old_license_plate, vue: {"v-model": 'vehicle.old_license_plate', ':disabled': 'isVehicleLoaded'},
+                    input_html: { class: 'license_plate' } %>
+                </div><!-- /.col-md-3 -->
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+          <% end %>
+        </fieldset><!-- /.vehicle-fields -->
 
-        <div class='form-inputs'>
-          <%= f.input :purchase_price %>
-          <%= f.input :purchase_date, as: :string %>
-        </div><!-- /.form-inputs -->
-      </fieldset><!-- /.purchaser-fields -->
+        <fieldset name='seller-informations'
+          data-params='<%= @sale.seller.to_json %>'
+          data-fetcher-url='<%= customers_path %>'>
+          <legend><%= i18n.t('seller_informations') %></legend>
+          <%= f.simple_fields_for :seller_attributes, @sale.seller do |fs| %>
+            <%= f.input :seller_id, as: :hidden, vue: { 'v-model': 'seller.id' } %>
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'>
+                  <%= fs.input :cpf, vue: {"v-on:keyup": 'fetchSeller', 'v-model': 'seller.cpf', ref: 'sellerCpf'},
+                    input_html: { class: 'cpf' } %>
+                </div><!-- /.col-md-3 -->
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
 
-      <fieldset name='sale-informations'>
-        <legend>Sale informations</legend>
-        <%= f.input :incoming_invoice_number %>
-        <%= f.input :incoming_invoice_date, as: :string %>
-        <%= f.input :output_invoice_number %>
-        <%= f.input :output_invoice_date, as: :string %>
-        <%= f.input :brokerage, as: :boolean %>
-        <%= f.input :observation %>
-      </fieldset>
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'><%= fs.input :full_name, vue: {'v-model': 'seller.full_name', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-3'>
+                  <%= fs.input :birth_date, as: :string, vue: {'v-model': 'seller.birth_date', ':disabled': 'isSellerLoaded'},
+                    input_html: { class: 'date' } %>
+                </div><!-- /.col-md-3 -->
+                <div class='col-md-2'><%= fs.input :rg, vue: {'v-model': 'seller.rg', ':disabled': 'isSellerLoaded'}  %></div>
+                <div class='col-md-1'><%= fs.input :rg_sender, vue: {'v-model': 'seller.rg_sender', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-2'>
+                  <%= fs.input :rg_expedition, as: :string, vue: {'v-model': 'seller.rg_expedition', ':disabled': 'isSellerLoaded'},
+                    input_html: { class: 'date' } %>
+                </div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
 
-      <div class='form-actions'>
-        <%= f.button :submit %>
-      </div><!-- /.form-actions -->
-    <% end %>
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'><%= fs.input :place_birth, vue: {'v-model': 'seller.place_birth', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-1'>
+                  <%= fs.input :place_birth_uf, vue: {'v-model': 'seller.place_birth_uf', ':disabled': 'isSellerLoaded'},
+                    input_html: {class: 'uf' } %>
+                </div>
+                <div class='col-md-2'><%= fs.input :nacionality, vue: {'v-model': 'seller.nacionality', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-3'><%= fs.input :mother, vue: {'v-model': 'seller.mother', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-3'><%= fs.input :father, vue: {'v-model': 'seller.father', ':disabled': 'isSellerLoaded'} %></div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-2'>
+                  <%= fs.input :postal_code, vue: {'v-model': 'seller.postal_code', ':disabled': 'isSellerLoaded'},
+                    input_html: { class: 'zip' } %>
+                </div>
+                <div class='col-md-3'><%= fs.input :address, vue: {'v-model': 'seller.address', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-2'><%= fs.input :neighborhood, vue: {'v-model': 'seller.neighborhood', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-2'><%= fs.input :adjunct, vue: {'v-model': 'seller.adjunct', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-2'><%= fs.input :city, vue: {'v-model': 'seller.city', ':disabled': 'isSellerLoaded'} %></div>
+                <div class='col-md-1'><%= fs.input :state, vue: {'v-model': 'seller.state', ':disabled': 'isSellerLoaded'} %></div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-2'>
+                  <%= fs.input :phone, vue: {'v-model': 'seller.phone', ':disabled': 'isSellerLoaded'},
+                    input_html: { class: 'phone' } %>
+                </div><!-- /.col-md-2 -->
+                <div class='col-md-2'>
+                  <%= fs.input :cell_phone, vue: {'v-model': 'seller.cell_phone', ':disabled': 'isSellerLoaded'},
+                    input_html: {class: 'phone' } %>
+                </div><!-- /.col-md-2 -->
+                <div class='col-md-3'><%= fs.input :email, vue: {'v-model': 'seller.email', ':disabled': 'isSellerLoaded'} %></div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+          <% end %>
+        </fieldset><!-- /.seller-fields -->
+
+        <fieldset name='purchaser-informations'
+          data-params='<%= @sale.purchaser.to_json %>'
+          data-fetcher-url='<%= customers_path %>'>
+          <legend><%= i18n.t('purchaser_informations') %></legend>
+          <%= f.simple_fields_for :purchaser_attributes, @sale.purchaser do |fp| %>
+            <%= f.input :purchaser_id, as: :hidden, vue: {'v-model': 'purchaser.id'} %>
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'>
+                  <%= fp.input :cpf, vue: {"v-on:keyup": 'fetchPurchaser', 'v-model': 'purchaser.cpf', ref: 'purchaserCpf'},
+                    input_html: { class: 'cpf' } %>
+                </div><!-- /.col-md-3 -->
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'><%= fp.input :full_name, vue: {'v-model': 'purchaser.full_name', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-3'>
+                  <%= fp.input :birth_date, as: :string, vue: {'v-model': 'purchaser.birth_date', ':disabled': 'isPurchaserLoaded'},
+                    input_html: { class: 'date' } %>
+                </div><!-- /.col-md-3 -->
+                <div class='col-md-2'><%= fp.input :rg, vue: {'v-model': 'purchaser.rg', ':disabled': 'isPurchaserLoaded'}  %></div>
+                <div class='col-md-1'><%= fp.input :rg_sender, vue: {'v-model': 'purchaser.rg_sender', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-2'>
+                  <%= fp.input :rg_expedition, as: :string, vue: {'v-model': 'purchaser.rg_expedition', ':disabled': 'isPurchaserLoaded'},
+                    input_html: { class: 'date' } %>
+                </div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-3'><%= fp.input :place_birth, vue: {'v-model': 'purchaser.place_birth', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-1'>
+                  <%= fp.input :place_birth_uf, vue: {'v-model': 'purchaser.place_birth_uf', ':disabled': 'isPurchaserLoaded'},
+                    input_html: { class: 'uf' } %>
+                </div><!-- /.col-md-1 -->
+                <div class='col-md-2'><%= fp.input :nacionality, vue: {'v-model': 'purchaser.nacionality', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-3'><%= fp.input :mother, vue: {'v-model': 'purchaser.mother', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-3'><%= fp.input :father, vue: {'v-model': 'purchaser.father', ':disabled': 'isPurchaserLoaded'} %></div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-2'>
+                  <%= fp.input :postal_code, vue: {'v-model': 'purchaser.postal_code', ':disabled': 'isPurchaserLoaded'},
+                    input_html: { class: 'zip' } %>
+                </div>
+                <div class='col-md-3'><%= fp.input :address, vue: {'v-model': 'purchaser.address', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-2'><%= fp.input :neighborhood, vue: {'v-model': 'purchaser.neighborhood', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-2'><%= fp.input :adjunct, vue: {'v-model': 'purchaser.adjunct', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-2'><%= fp.input :city, vue: {'v-model': 'purchaser.city', ':disabled': 'isPurchaserLoaded'} %></div>
+                <div class='col-md-1'><%= fp.input :state, vue: {'v-model': 'purchaser.state', ':disabled': 'isPurchaserLoaded'} %></div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+
+            <div class='row'>
+              <div class='form-inputs'>
+                <div class='col-md-2'>
+                  <%= fp.input :phone, vue: {'v-model': 'purchaser.phone', ':disabled': 'isPurchaserLoaded'},
+                    input_html: { class: 'phone' } %>
+                </div><!-- /.col-md-2 -->
+                <div class='col-md-2'>
+                  <%= fp.input :cell_phone, vue: {'v-model': 'purchaser.cell_phone', ':disabled': 'isPurchaserLoaded'},
+                    input_html: { class: 'phone' } %>
+                </div><!-- col-md-2 -->
+                <div class='col-md-3'><%= fp.input :email, vue: {'v-model': 'purchaser.email', ':disabled': 'isPurchaserLoaded'} %></div>
+              </div><!-- /.form-inputs' -->
+            </div><!-- /.row -->
+          <% end %>
+        </fieldset><!-- /.purchaser-fields -->
+
+        <fieldset name='sale-informations'>
+          <legend><%= i18n.t('sale_informations') %></legend>
+
+          <div class='row'>
+            <div class='form-inputs'>
+              <div class='col-md-2'>
+                <%= f.input :sale_price, as: :string, vue: {'ref': 'salePrice'}, input_html: { class: 'money' } %>
+              </div><!-- /.col-md-2 -->
+              <div class='col-md-2'><%= f.input :sale_date, as: :string, input_html: { class: 'date' } %></div>
+              <div class='col-md-2'><%= f.input :incoming_invoice_number %></div>
+              <div class='col-md-2'><%= f.input :incoming_invoice_date, as: :string, input_html: { class: 'date' } %></div>
+            </div><!-- /.form-inputs' -->
+          </div><!-- /.row -->
+
+          <div class='row'>
+            <div class='form-inputs'>
+              <div class='col-md-2'><%= f.input :purchase_price, as: :string, input_html: { class: 'money' } %></div>
+              <div class='col-md-2'><%= f.input :purchase_date, as: :string, input_html: { class: 'date' } %></div>
+              <div class='col-md-2'><%= f.input :output_invoice_number %></div>
+              <div class='col-md-2'><%= f.input :output_invoice_date, as: :string, input_html: { class: 'date' } %></div>
+            </div><!-- /.form-inputs' -->
+          </div><!-- /.row -->
+
+          <div class='row'>
+            <div class='form-inputs'>
+              <div class='col-md-5'><%= f.input :observation %></div>
+              <div class='col-md-2'><%= f.input :brokerage, as: :boolean %></div>
+            </div><!-- /.form-inputs' -->
+          </div><!-- /.row -->
+        </fieldset>
+
+        <div class='form-actions'><%= f.button :submit %></div>
+      <% end %><!-- /I18n.with_default -->
+    <% end %><!-- /simple_form_for -->
   </div><!-- /.col-lg-12 -->
 </div><!-- /.row -->
