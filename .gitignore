@@ -16,3 +16,6 @@
 /tmp
 
 .env
+
+# Ignore docker personal settings.
+docker-compose.yml
