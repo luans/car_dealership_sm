@@ -1,4 +1,4 @@
-postgres:
+db:
   image: postgres
   volumes:
     - ~/.docker-volumes/car_dealership_sm/db:/var/lib/postgresql/data
@@ -15,4 +15,4 @@ web:
   ports:
     - '3000:3000'
   links:
-    - postgres
+    - db
