@@ -20,8 +20,7 @@
                 </div>
               </div><!-- /.form-inputs -->
             </div><!-- /.row -->
-
-            <div class='row'>
+<div class='row'>
               <div class='form-inputs'>
                 <div class='col-md-3'><%= fv.input :brand, vue: {"v-model": 'vehicle.brand', ':disabled': 'isVehicleLoaded', ref: 'brand'} %></div>
                 <div class='col-md-3'><%= fv.input :version, vue: {"v-model": 'vehicle.version', ':disabled': 'isVehicleLoaded'} %></div>
@@ -214,10 +213,8 @@
 
           <div class='row'>
             <div class='form-inputs'>
-              <div class='col-md-2'>
-                <%= f.input :sale_price, as: :string, vue: {'ref': 'salePrice'}, input_html: { class: 'money' } %>
-              </div><!-- /.col-md-2 -->
-              <div class='col-md-2'><%= f.input :sale_date, as: :string, input_html: { class: 'date' } %></div>
+              <div class='col-md-2'><%= f.input :purchase_price, as: :string, input_html: { class: 'money' } %></div>
+              <div class='col-md-2'><%= f.input :purchase_date, as: :string, input_html: { class: 'date' } %></div>
               <div class='col-md-2'><%= f.input :incoming_invoice_number %></div>
               <div class='col-md-2'><%= f.input :incoming_invoice_date, as: :string, input_html: { class: 'date' } %></div>
             </div><!-- /.form-inputs' -->
@@ -225,8 +222,10 @@
 
           <div class='row'>
             <div class='form-inputs'>
-              <div class='col-md-2'><%= f.input :purchase_price, as: :string, input_html: { class: 'money' } %></div>
-              <div class='col-md-2'><%= f.input :purchase_date, as: :string, input_html: { class: 'date' } %></div>
+              <div class='col-md-2'>
+                <%= f.input :sale_price, as: :string, vue: {'ref': 'salePrice'}, input_html: { class: 'money' } %>
+              </div><!-- /.col-md-2 -->
+              <div class='col-md-2'><%= f.input :sale_date, as: :string, input_html: { class: 'date' } %></div>
               <div class='col-md-2'><%= f.input :output_invoice_number %></div>
               <div class='col-md-2'><%= f.input :output_invoice_date, as: :string, input_html: { class: 'date' } %></div>
             </div><!-- /.form-inputs' -->

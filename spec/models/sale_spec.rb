@@ -21,19 +21,18 @@ describe Sale, type: :model do
     context 'sale date' do
       it { is_expected.to validate_presence_of(:sale_date) }
       it { is_expected.to date_cannot_be_in_the_future(:sale_date) }
+
+      it 'cannot be less than purchase date' do
+        subject.purchase_date = Date.new(2016, 10, 10)
+        subject.sale_date = Date.new(2016, 10, 9)
+
+        is_expected.to be_invalid
+        expect(subject.errors[:sale_date]).to include('deve ser maior ou igual a data da compra')
+      end
     end
 
     context 'purchase date' do
       it { is_expected.to validate_presence_of(:purchase_date) }
-
-      it 'cannot be less than sale date' do
-        subject.sale_date = Date.new(2016, 10, 10)
-        subject.purchase_date = Date.new(2016, 10, 9)
-
-        is_expected.to be_invalid
-        expect(subject.errors[:purchase_date]).to include('deve ser maior ou igual a data de venda')
-      end
-
       it { is_expected.to date_cannot_be_in_the_future(:purchase_date) }
     end
 
