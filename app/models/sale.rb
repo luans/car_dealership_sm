@@ -12,9 +12,9 @@ class Sale < ActiveRecord::Base
                             allow_blank: true
 
   validates :sale_date, date: { allow_nil: true }
-  validates :purchase_date, date: {
-            after_or_equal_to: :sale_date,
-            message: :greater_than_or_equal_to_sale_date,
+  validates :sale_date, date: {
+            after_or_equal_to: :purchase_date,
+            message: :greater_than_or_equal_to_purchase_date,
             allow_nil: true }
   validates :incoming_invoice_date, date: { allow_nil: true }
   validates :output_invoice_date, date: {

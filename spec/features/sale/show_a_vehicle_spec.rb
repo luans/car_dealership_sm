@@ -6,12 +6,12 @@ feature 'Show a vehicle' do
       seller: create(:customer, full_name: 'Seller'),
       purchaser: create(:customer, full_name: 'Purchaser'),
       vehicle: create(:vehicle,  brand: 'Audi', version: 'A4 2.0 AT', maker_year: 2014, model_year: 2015),
-      sale_price: 20000.0,
-      sale_date: '10/10/2015',
+      purchase_price: 20000.0,
+      purchase_date: '10/10/2015',
       incoming_invoice_number: '123456',
       incoming_invoice_date: '11/10/2015',
-      purchase_price: 22000.0,
-      purchase_date: '20/10/2015',
+      sale_price: 22000.0,
+      sale_date: '20/10/2015',
       output_invoice_number: '654321',
       output_invoice_date: '21/10/2015',
       brokerage: false,
@@ -31,7 +31,7 @@ feature 'Show a vehicle' do
     expect(page).to have_content 'A4 2.0 AT'
     expect(page).to have_content '2014'
     expect(page).to have_content '2015'
-    expect(page).to have_content '20/10/2015'
+    expect(page).to have_content '10/10/2015'
   end
 
   scenario 'with success' do

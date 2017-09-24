@@ -74,15 +74,15 @@ feature 'Create a sale' do
     end
 
     within "fieldset[name='sale-informations']" do
-      fill_in 'Preço de venda', with: 20000.0
-      fill_in 'Data da venda', with: '10/01/2016'
+      fill_in 'Preço de compra', with: 20000.0
+      fill_in 'Data da compra', with: '10/01/2016'
       fill_in 'NFE de entrada', with: '123456'
-      fill_in 'Data de entrada NFE', with: '21/01/2016'
+      fill_in 'Data de entrada NFE', with: '11/01/2016'
 
-      fill_in 'Preço de compra', with: 22000.0
-      fill_in 'Data da compra', with: '20/01/2016'
+      fill_in 'Preço de venda', with: 22000.0
+      fill_in 'Data da venda', with: '20/01/2016'
       fill_in 'NFE de saída', with: '123457'
-      fill_in 'Data de saída NFE', with: '22/01/2016'
+      fill_in 'Data de saída NFE', with: '21/01/2016'
 
       fill_in 'Observação', with: 'Observation about sale'
       check 'Corretagem'
@@ -98,9 +98,9 @@ feature 'Create a sale' do
     expect(page).to have_content 'Purchaser'
     expect(page).to have_content '123456'
     expect(page).to have_content '10/01/2016'
+    expect(page).to have_content '11/01/2016'
     expect(page).to have_content '20/01/2016'
     expect(page).to have_content '21/01/2016'
-    expect(page).to have_content '22/01/2016'
     expect(page).to have_content 'Observation about sale'
   end
 end
