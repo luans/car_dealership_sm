@@ -10,6 +10,10 @@ class Customer < ActiveRecord::Base
   validate :old_enough
   validate :rg_expedition_date
 
+  scope :by_query, -> (query) do
+    where('full_name ILIKE :query_like OR cpf = :query', query: query, query_like: "%#{query}%")
+  end
+
   def to_s
     full_name
   end

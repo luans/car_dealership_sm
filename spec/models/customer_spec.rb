@@ -49,4 +49,20 @@ RSpec.describe Customer, type: :model do
       end
     end
   end
+
+  context 'scopes' do
+    describe 'by_query' do
+      let!(:customer) { create(:customer, full_name: 'James Bond', cpf: '007.007.007-00') }
+
+      before(:all) { create_list(:customer, 2) }
+
+      it 'gets customer by full_name' do
+        expect(Customer.by_query('James Bond')).to eq([customer])
+      end
+
+      it 'gets customer by cpf' do
+        expect(Customer.by_query('007.007.007-00')).to eq([customer])
+      end
+    end
+  end
 end

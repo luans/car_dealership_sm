@@ -3,8 +3,10 @@ class CustomersController < ApplicationController
 
   respond_to :json, only: :index
 
+  has_scope :by_query
+
   def index
-    @customers = Customer.all
+    @customers = apply_scopes(Customer).all
     @customers = Customer.where(cpf: params[:cpf]) if params[:cpf]
     respond_with @customers
   end

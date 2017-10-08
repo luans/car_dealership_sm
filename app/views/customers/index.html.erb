@@ -4,6 +4,17 @@
       <h3><%= t('.title') %></h3>
     </div><!-- /.page-header -->
 
+    <%= form_for :search, url: customers_path, method: :get, html: {class: 'form-horizontal'} do |f| %>
+      <div class='form-group'>
+        <div class='col-md-11'>
+          <%= search_field_tag :by_query, params[:by_query], placeholder: t('placeholders.search_customers_by'), class: 'form-control' %>
+        </div>
+        <div class='col-md-1'>
+          <%= f.submit t('actions.search'), class: 'btn' %>
+        </div>
+      </div><!-- /.form-group -->
+    <% end %>
+
     <table class='table table-hover'>
       <thread>
         <tr>
