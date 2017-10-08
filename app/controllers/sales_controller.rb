@@ -1,6 +1,8 @@
 class SalesController < ApplicationController
+  has_scope :by_query
+
   def index
-    @sales = Sale.all
+    @sales = apply_scopes(Sale).all
   end
 
   def new

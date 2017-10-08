@@ -77,4 +77,43 @@ describe Sale, type: :model do
       end
     end
   end
+
+  context 'scopes' do
+    describe 'by_query' do
+      let(:purchaser) { create(:customer, full_name: 'Harry Potter', cpf: '000.000.000-01') }
+      let(:seller) { create(:customer, full_name: 'Draco Malfoy', cpf: '000.000.000-02') }
+      let(:vehicle) { create(:vehicle, license_plate: 'ASD-0007', chassi: '9BG12344312XZY', renavam: '0987654321')}
+      let!(:sale) { create(:sale, purchaser: purchaser, seller: seller, vehicle: vehicle) }
+
+      before { create_list(:sale, 3) }
+
+      it "gets sale by vehicle's license plate" do
+        expect(Sale.by_query('ASD-0007')).to eq([sale])
+      end
+
+      it "gets sale by vehicle's chassi" do
+        expect(Sale.by_query('9BG12344312XZY')).to eq([sale])
+      end
+
+      it "gets sale by vehicle's renavam" do
+        expect(Sale.by_query('0987654321')).to eq([sale])
+      end
+
+      it "gets sale by purchaser's name" do
+        expect(Sale.by_query('Harry Potter')).to eq([sale])
+      end
+
+      it "gets sale by purchaser's cpf" do
+        expect(Sale.by_query('000.000.000-01')).to eq([sale])
+      end
+
+      it "gets sale by sellers's name" do
+        expect(Sale.by_query('Draco Malfoy')).to eq([sale])
+      end
+
+      it "gets sale by sellers's cpf" do
+        expect(Sale.by_query('000.000.000-02')).to eq([sale])
+      end
+    end
+  end
 end
