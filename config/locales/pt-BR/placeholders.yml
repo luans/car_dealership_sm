@@ -1,3 +1,4 @@
 pt-BR:
   placeholders:
-    search_sales_by: Placa, renavam, chassi, nome ou cpf de uma das partes
+    search_sales_by: Placa, renavam, chassi, nome ou CPF de uma das partes
+    search_vehicles_by: Placa, renavam ou chassi

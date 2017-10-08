@@ -7,6 +7,10 @@ class Vehicle < ActiveRecord::Base
 
   has_many :sales
 
+  scope :by_query, ->(query) do
+    where("upper(license_plate) = :q OR upper(chassi) = :q OR renavam = :q", q: query.to_s.strip.upcase)
+  end
+
   validates_presence_of :license_plate, :brand, :version, :model_year, :maker_year, :status
   validates_uniqueness_of :license_plate, case_sensitive: false
   validates_uniqueness_of :chassi, case_sensitive: false, allow_blank: true

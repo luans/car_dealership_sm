@@ -1,10 +1,12 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update]
 
+  has_scope :by_query
+
   respond_to :json, only: :index
 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = apply_scopes(Vehicle).all
     @vehicles = @vehicles.where(license_plate: params[:license_plate]) if params[:license_plate]
     respond_with @vehicles
   end

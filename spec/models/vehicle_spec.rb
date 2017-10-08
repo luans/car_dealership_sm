@@ -71,6 +71,28 @@ RSpec.describe Vehicle, type: :model do
       end
     end
   end
+
+  context 'scopes' do
+    describe 'by_query' do
+      let!(:vehicle) do
+        create(:vehicle, license_plate: 'XYZ-0101', renavam: '12344321', chassi: '9BG01010101')
+      end
+
+      before(:all) { create_list(:vehicle, 2) }
+
+      it 'gets vehicle by license plate' do
+        expect(Vehicle.by_query('XYZ-0101')).to eq([vehicle])
+      end
+
+      it 'gets vehicle by renavam' do
+        expect(Vehicle.by_query('12344321')).to eq([vehicle])
+      end
+
+      it 'gets vehicle by chassi' do
+        expect(Vehicle.by_query('9BG01010101')).to eq([vehicle])
+      end
+    end
+  end
 end
 
 
